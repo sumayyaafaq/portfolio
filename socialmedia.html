@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Social Media Management | Sumayya Afaq</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap">
+  <script defer src="script.js"></script>
+<style>
+.flip-card {
+  perspective: 1000px;
+  height: 100%;
+}
+
+.flip-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 220px;
+  transition: transform 0.6s ease;
+  transform-style: preserve-3d;
+}
+
+.flip-card:hover .flip-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-front, .flip-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  padding: 1rem;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+.flip-front {
+  background: #fdf1f4;
+  z-index: 2;
+}
+
+.flip-back {
+  background-size: cover;
+  background-position: center;
+  transform: rotateY(180deg);
+}
+.project-logo {
+  display: block;
+  margin: 0 auto;
+  max-width: 80px;
+  max-height: 80px;
+  object-fit: contain;
+}
+</style>
+</head>
+<body>
+
+<!-- Header -->
+<header>
+    <nav class="navbar">
+      <div class="logo">Sumayya Afaq</div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li class="dropdown">
+  <a href="services.html">Services ▾</a>
+  <ul class="dropdown-menu">
+    <li><a href="web-development.html">Web Development</a></li>
+    <li><a href="app-development.html">App Development</a></li>
+    <li><a href="design.html">Graphic Design</a></li>
+    <li><a href="branding.html">Branding</a></li>
+    <li><a href="socialmedia.html">Social Media</a></li>
+    <li><a href="presentations.html">Presentations</a></li>
+	<li><a href="wedding-stationery.html">Wedding stationary</a></li>
+  </ul>
+</li>
+        <li><a href="portfolio.html">Design Portfolio</a></li>
+          <li><a href="index.html#about">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+<!-- Social Media Management Section -->
+<section class="section">
+  <h1 class="section-title">Social Media Management</h1>
+
+  <div class="about-content">
+    <p class="quote">“Consistency beats complexity in the social media game.”</p>
+
+    <p>I help you plan, design, and post meaningful content that aligns with your brand voice. Whether you're just starting out or want to polish your existing feed — I bring strategy and style together.</p>
+
+    <h3>What’s Included:</h3>
+    <ul>
+      <li>Post & story designs (static + carousel)</li>
+      <li>Captions & content planning (monthly/weekly)</li>
+      <li>Hashtag research and scheduling</li>
+      <li>Highlight covers, bios & brand alignment</li>
+      <li>Monthly content calendars</li>
+    </ul>
+
+    <h3>Best For:</h3>
+    <ul>
+      <li>Educators & coaches building personal brands</li>
+      <li>Small businesses & product-based services</li>
+      <li>Faith-based, wellness & lifestyle content</li>
+    </ul>
+
+    <h3>Tools I Work With:</h3>
+    <ul>
+      <li>Canva (for design)</li>
+      <li>Meta Business Suite</li>
+      
+    </ul>
+<section class="section">
+  <h2 class="section-title">My Clients</h2>
+  <div class="projects-grid">
+
+ 
+    <div class="flip-card">
+      <div class="flip-inner">
+        <div class="flip-front project-card">
+          <img src="assets/logos/ahmed-power.png" alt="Ahmed Power Solutions Logo" class="project-logo">
+          <h4>Ahmed Power Solutions</h4>
+                  </div>
+        <div class="flip-back" style="background-image: url('assets/20.png');"></div>
+      </div>
+    </div>
+
+  
+
+    <div class="flip-card">
+      <div class="flip-inner">
+        <div class="flip-front project-card">
+          <img src="assets/logos/whisk-wonder.png" alt="Whisk & Wonder Logo" class="project-logo">
+          <h4>Whisk & Wonder</h4>
+                 </div>
+        <div class="flip-back" style="background-image: url('assets/38.png');"></div>
+      </div>
+    </div>
+
+   
+
+    <div class="flip-card">
+      <div class="flip-inner">
+        <div class="flip-front project-card">
+          <img src="assets/logos/petalpine.png" alt="Pine & Petal Logo" class="project-logo">
+          <h4>Pine & Petal Events</h4>
+           </div>
+        <div class="flip-back" style="background-image: url('assets/71.png');"></div>
+      </div>
+    </div>
+
+
+
+  </div>
+</section>
+
+    <h3>Turnaround Time:</h3>
+    <p>Initial setup & brand review: 2–3 days. Weekly or monthly posting plans delivered every Friday or 1st of the month.</p>
+
+    <div class="cta-block">
+  <h3>Consistent. Strategic. On-Brand.</h3>
+  <p>I help you plan, design, and post content that connects — keeping your feed professional, purposeful, and audience-ready.</p>
+  <a href="contact.html" class="btn">Inquire About Social Media Plans</a>
+</div>
+
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <h3>Let’s Connect</h3>
+  <p>Email: <a href="mailto:sumayyaafaq.sa@gmail.com">sumayyaafaq.sa@gmail.com</a></p>
+  <p>WhatsApp: <a href="https://wa.me/971556703700" target="_blank">+971 55 670 3700</a></p>
+
+  <div class="socials">
+    <a href="https://github.com/sumayyaafaq" target="_blank">GitHub</a>
+    <a href="https://www.linkedin.com/in/sumayya-afaq-975a22266" target="_blank">LinkedIn</a>
+    <a href="#" target="_blank">Instagram (Coming Soon)</a>
+  </div>
+
+  <p class="copyright">© 2025 Sumayya Afaq. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
