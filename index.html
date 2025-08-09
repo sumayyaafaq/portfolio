@@ -7,19 +7,129 @@
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap">
   <script defer src="script.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<style>
+.services-row {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+}
+
+.service-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 120px;
+}
+
+.glass-card {
+  width: 100%;
+  height: 120px;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.glass-card:hover {
+  transform: translateY(-6px);
+}
+
+.glass-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.service-label {
+  margin-top: 0.5rem;
+  font-weight: 500;
+  font-size: 0.9rem;
+  text-align: center;
+  color: #333;
+}
+.dropdown {
+  position: relative;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: #fde6e8; /* Light pink like navbar */
+  border: 1px solid #f8bbd0;
+  min-width: 200px;
+  z-index: 999;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+}
+
+.dropdown-menu li {
+  display: block;
+}
+
+.dropdown-menu a {
+  color: black; /* Dark pink text */
+  padding: 0.75rem 1.2rem;
+  display: block;
+  text-decoration: none;
+  transition: background 0.3s ease;
+  white-space: nowrap;
+}
+
+.dropdown-menu a:hover {
+  background-color: #fce4ec;
+}
+
+.dropdown:hover .dropdown-menu,
+.dropdown-menu:hover {
+  display: block;
+}
+.card {
+  background-color: #fde6e8;
+  color: black;
+  border: none;
+  padding: 0.7rem 1rem;
+  text-align: center;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  box-shadow: 2px 2px 6px rgba(0,0,0,0.1);
+  transition: transform 0.2s ease, background-color 0.3s;
+}
+.card:hover {
+  background-color: #fce4ec; /* dark pink on hover */
+  transform: translateY(-4px);
+  box-shadow: 4px 4px 12px rgba(0,0,0,0.15);
+}
+</style>
 </head>
-<body>
+<body class="home-page">
 
   <!-- Navbar -->
   <header>
     <nav class="navbar">
       <div class="logo">Sumayya Afaq</div>
       <ul class="nav-links">
-        <li><a href="#home">Home</a></li>
-        <li><a href="services.html">Services</a></li>
+        <li><a href="index.html">Home</a></li>
+        <li class="dropdown">
+  <a href="services.html">Services ▾</a>
+  <ul class="dropdown-menu">
+    <li><a href="web-development.html">Web Development</a></li>
+    <li><a href="app-development.html">App Development</a></li>
+    <li><a href="design.html">Graphic Design</a></li>
+    <li><a href="branding.html">Branding</a></li>
+    <li><a href="socialmedia.html">Social Media</a></li>
+    <li><a href="presentations.html">Presentations</a></li>
+	<li><a href="wedding-stationery.html">Wedding stationary</a></li>
+  </ul>
+</li>
         <li><a href="portfolio.html">Design Portfolio</a></li>
-        <li><a href="projects.html">Web Projects</a></li>
-        <li><a href="index.html#about">About</a></li>
+          <li><a href="index.html#about">About</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul>
     </nav>
@@ -36,46 +146,7 @@
 </div>
   </section>
 
-  <!-- Services Preview -->
-  <section id="services" class="section">
-    <h2 class="section-title">What I Do</h2>
-    <div class="services-grid">
-      <div class="service-card">
-        <h3>Web Development </h3>
-        <p>Custom, responsive websites built from scratch using HTML, CSS, and JavaScript.</p>
-		<a href="web-development.html">Learn more</a>
-      </div>
-      
-      <div class="service-card">
-        <h3>Brand Identity</h3>
-        <p>Crafting logos, style guides, and full branding systems for modern businesses.</p>
-		<a href="branding-identity.html">Learn more</a>
-      </div>
-      <div class="service-card">
-        <h3>Wedding Stationery</h3>
-        <p>Personalized invites, monograms & nikah nama designs for special events.</p>
-		<a href="wedding-stationery.html">Learn more</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Featured Projects -->
-  <section class="section" id="projects">
-    <h2 class="section-title">Featured Web Projects</h2>
-    <div class="projects-grid">
-      <div class="project-card">
-        <h4>English Made Easy</h4>
-        <p>Learning platform website for students</p>
-        <a href="https://github.com/sumayyaafaq/english-made-easy" target="_blank">View on GitHub</a>
-      </div>
-      <div class="project-card">
-        <h4>Tutoring Simplified</h4>
-        <p>Online tutoring services site with booking & info pages</p>
-        <a href="https://sumayyaafaq.github.io/tutoringsimplified.com/" target="_blank">Live Site</a>
-      </div>
-    </div>
-  </section>
-
+  
   <section class="section" id="about">
   <h2 class="section-title">About Me</h2>
   <div class="about-content">
@@ -87,16 +158,103 @@
 
     <p>Let’s create something meaningful — whether it’s a brand, a website, or your next big idea.</p>
   </div>
+  <section class="section" style="padding: 2rem;">
+  <h2 style="font-size: 1.8rem; color: #f15ea4;">Programming Languages</h2>
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 1rem;">
+    <div class="card">Java</div>
+    <div class="card">HTML/XML</div>
+    <div class="card">MySQL</div>
+    <div class="card">C++</div>
+    <div class="card">C#</div>
+    <div class="card">CSS</div>
+    <div class="card">JavaScript</div>
+    <div class="card">PHP</div>
+    <div class="card">Laravel</div>
+    <div class="card">Python</div>
+  </div>
+
+  <h2 style="font-size: 1.8rem; color: #f15ea4; margin-top: 3rem;">Software Proficiency</h2>
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 1rem;">
+    <div class="card">NetBeans</div>
+    <div class="card">Visual Studio</div>
+    <div class="card">VS Code</div>
+    <div class="card">Android Studio</div>
+    <div class="card">Adobe Illustrator</div>
+    <div class="card">Adobe Photoshop</div>
+    <div class="card">After Effects</div>
+    <div class="card">InDesign</div>
+    <div class="card">Premiere Pro</div>
+    <div class="card">Lightroom</div>
+    <div class="card">3D Blender</div>
+    <div class="card">Canva</div>
+  </div>
+
+  <h2 style="font-size: 1.8rem; color: #f15ea4; margin-top: 3rem;">Languages</h2>
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 1rem;">
+    <div class="card">English</div>
+    <div class="card">Urdu</div>
+    <div class="card">Hindi</div>
+    <div class="card">Bengali</div>
+    <div class="card">Arabic</div>
+    <div class="card">Brohi</div>
+  </div>
+</section>
+
+  <section class="section services-section" id="services">
+  <h2 class="section-title">My Services</h2>
+  <div class="services-row">
+    <div class="service-block">
+      <a href="web-development.html" class="glass-card">
+        <img src="assets/web-dev.png" alt="Web Development" />
+      </a>
+      <p class="service-label">Web Development</p>
+    </div>
+    <div class="service-block">
+      <a href="app-development.html" class="glass-card">
+        <img src="assets/app-dev.png" alt="App Development" />
+      </a>
+      <p class="service-label">App Development</p>
+    </div>
+    <div class="service-block">
+      <a href="design.html" class="glass-card">
+        <img src="assets/graphic-design.png" alt="Graphic Design" />
+      </a>
+      <p class="service-label">Graphic Design</p>
+    </div>
+    <div class="service-block">
+      <a href="branding.html" class="glass-card">
+        <img src="assets/branding.png" alt="Branding" />
+      </a>
+      <p class="service-label">Branding</p>
+    </div>
+    <div class="service-block">
+      <a href="socialmedia.html" class="glass-card">
+        <img src="assets/social-media.png" alt="Social Media" />
+      </a>
+      <p class="service-label">Social Media</p>
+    </div>
+    <div class="service-block">
+      <a href="presentations.html" class="glass-card">
+        <img src="assets/presentation.png" alt="Presentations" />
+      </a>
+      <p class="service-label">Presentations</p>
+    </div>
+	<div class="service-block">
+      <a href="wedding-stationery.html" class="glass-card">
+        <img src="assets/wedding.png" alt="Presentations" />
+      </a>
+      <p class="service-label">Wedding Stationary</p>
+    </div>
+  </div>
 </section>
 
   <!-- Contact CTA -->
-  <section class="section" id="cta">
-    <h2 class="section-title">Let’s Work Together</h2>
-    <p style="text-align:center;">Got an idea or project? Reach out and let’s bring it to life.</p>
-    <div style="text-align:center; margin-top: 1rem;">
-      <a href="contact.html" class="btn">Contact Me</a>
-    </div>
-  </section>
+  <section class="cta-block" id="cta">
+  <h3>Let’s Bring Your Ideas to Life</h3>
+  <p>Whether it's a fresh brand, a beautiful website, or meaningful design — I’m here to help you build it with intention.</p>
+  <a href="contact.html" class="btn">Start Your Project</a>
+</section>
+</section>
 
   <!-- Footer -->
   <footer>
@@ -113,3 +271,13 @@
 
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
