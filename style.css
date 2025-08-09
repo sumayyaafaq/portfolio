@@ -263,80 +263,7 @@ footer p {
   font-size: 0.9rem;
   color: #777;
 }
-.slideshow-container {
-  position: relative;
-  width: 500px;              /* ✅ Set a smaller fixed width */
-  margin: 2rem auto;
-  overflow: hidden;
-  border-radius: 12px;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-}
 
-.mySlides {
-  display: none;
-  position: relative;
-}
-
-.mySlides img {
-  width: 100%;               /* ✅ Scale image to container */
-  height: auto;              /* ✅ Maintain aspect ratio */
-  display: block;
-  margin: auto;
-  border-radius: 8px;
-}
-
-
-
-.caption {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  color: white;
-  padding: 1rem;
-  background: rgba(0,0,0,0.5);
-  text-align: center;
-  font-size: 1rem;
-}
-
-.prev, .next {
-  cursor: pointer;
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  padding: 0.5rem 1rem;
-  color: white;
-  font-size: 2rem;
-  user-select: none;
-  background: rgba(0, 0, 0, 0.3);
-  border-radius: 50%;
-}
-
-.prev:hover, .next:hover {
-  background-color: rgba(0, 0, 0, 0.6);
-}
-
-.prev { left: 10px; }
-.next { right: 10px; }
-
-.dots-container {
-  text-align: center;
-  margin-top: 1rem;
-}
-
-.dot {
-  height: 12px;
-  width: 12px;
-  margin: 0 5px;
-  background-color: #bbb;
-  border-radius: 50%;
-  display: inline-block;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.dot.active {
-  background-color: #f15ea4;
-}
 h2 {
   text-align: center;
   color: #f15ea4;           /* Your brand pink */
@@ -417,3 +344,204 @@ h2 {
 .cta-block .btn:hover {
   background-color: #d94a92;
 }
+.section-subtitle {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #f05da3;
+  margin: 2rem 0 1rem;
+  text-align: center;
+}
+  .dropdown {
+  position: relative;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: #fde6e8; /* Light pink like navbar */
+  border: 1px solid #f8bbd0;
+  min-width: 200px;
+  z-index: 999;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+}
+
+.dropdown-menu li {
+  display: block;
+}
+
+.dropdown-menu a {
+  color: black; /* Dark pink text */
+  padding: 0.75rem 1.2rem;
+  display: block;
+  text-decoration: none;
+  transition: background 0.3s ease;
+  white-space: nowrap;
+}
+
+.dropdown-menu a:hover {
+  background-color: #fce4ec;
+}
+
+.dropdown:hover .dropdown-menu,
+.dropdown-menu:hover {
+  display: block;
+}
+.presentation-section {
+  padding: 2rem;
+}
+
+.presentation-section h2 {
+  color: #f15ea4;
+  margin: 2rem 0 1rem;
+  font-size: 1.4rem;
+  text-align: left;
+}
+
+.carousel {
+  display: flex;
+  gap: 1rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding-bottom: 1rem;
+  scrollbar-width: none; /* Firefox */
+}
+
+.carousel::-webkit-scrollbar {
+  display: none; /* Chrome */
+}
+
+.carousel img {
+  height: 200px;
+  aspect-ratio: 16/9;
+  border-radius: 8px;
+  flex: 0 0 auto;
+  scroll-snap-align: start;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.carousel img:hover {
+  transform: scale(1.08);
+  z-index: 2;
+}
+.carousel-container {
+  position: relative;
+  margin-bottom: 3rem;
+}
+
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: #f15ea4;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  font-size: 1.5rem;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 5;
+  opacity: 0.8;
+  transition: background 0.3s ease;
+}
+
+.carousel-btn:hover {
+  background-color: #d94a92;
+}
+
+.carousel-btn.prev {
+  left: -10px;
+}
+
+.carousel-btn.next {
+  right: -10px;
+}
+#project-proposal .carousel img {
+  height: 200px;
+  aspect-ratio: 9/16;
+  border-radius: 8px;
+  flex: 0 0 auto;
+  scroll-snap-align: start;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 10px;
+  padding: 1rem;
+}
+
+.gallery-grid img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 10px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.gallery-grid img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+/* FILTER BUTTONS */
+.filter-buttons {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.filter-buttons button {
+  background-color: #fdd2e6; /* light tint of #f15ea4 */
+  border: 1px solid #f15ea4;
+  color: #a8326e;
+  padding: 0.5rem 1.2rem;
+  margin: 0 0.4rem 0.5rem;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.95rem;
+}
+
+.filter-buttons button:hover,
+.filter-buttons button.active {
+  background-color: #f15ea4; /* your main pink */
+  color: #fff;
+  border-color: #f15ea4;
+}
+
+
+/* GALLERY GRID */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 1rem;
+  padding: 0 1rem;
+}
+
+/* IMAGE CARDS */
+.filter-item {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.filter-item:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+/* OPTIONAL: Smooth fade in/out */
+.filter-item {
+  transition: all 0.3s ease;
+}
+
