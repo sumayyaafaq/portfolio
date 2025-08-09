@@ -6,7 +6,59 @@
   <title>Branding & Identity Design | Sumayya Afaq</title>
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap">
-</head>
+  <script defer src="script.js"></script>
+<style>
+.project-logo {
+  display: block;
+  margin: 0 auto;
+  max-width: 80px;
+  max-height: 80px;
+  object-fit: contain;
+}
+.flip-card {
+  perspective: 1000px;
+  height: 100%;
+}
+
+.flip-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 220px;
+  transition: transform 0.6s ease;
+  transform-style: preserve-3d;
+}
+
+.flip-card:hover .flip-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-front, .flip-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  padding: 1rem;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+.flip-front {
+  background: #fdf1f4;
+  z-index: 2;
+}
+
+.flip-back {
+  background-size: cover;
+  background-position: center;
+  transform: rotateY(180deg);
+}
+
+</style></head>
 <body>
 
   <!-- Navbar -->
@@ -14,11 +66,21 @@
     <nav class="navbar">
       <div class="logo">Sumayya Afaq</div>
       <ul class="nav-links">
-        <li><a href="#home">Home</a></li>
-        <li><a href="services.html">Services</a></li>
+        <li><a href="index.html">Home</a></li>
+        <li class="dropdown">
+  <a href="services.html">Services ▾</a>
+  <ul class="dropdown-menu">
+    <li><a href="web-development.html">Web Development</a></li>
+    <li><a href="app-development.html">App Development</a></li>
+    <li><a href="design.html">Graphic Design</a></li>
+    <li><a href="branding.html">Branding</a></li>
+    <li><a href="socialmedia.html">Social Media</a></li>
+    <li><a href="presentations.html">Presentations</a></li>
+	<li><a href="wedding-stationery.html">Wedding stationary</a></li>
+  </ul>
+</li>
         <li><a href="portfolio.html">Design Portfolio</a></li>
-        <li><a href="projects.html">Web Projects</a></li>
-        <li><a href="index.html#about">About</a></li>
+          <li><a href="index.html#about">About</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul>
     </nav>
@@ -46,18 +108,106 @@
     <h3>Perfect For</h3>
     <p>Startups, online boutiques, creative freelancers, coaches, beauty/wellness brands, and anyone who values visual consistency.</p>
 
-    <h3>Sample Projects</h3>
-    <ul>
-      <li><strong>BloomRoot Botanicals</strong> – Clean, nature-inspired skincare brand</li>
-      <li><strong>Petal & Pine Events</strong> – Feminine, elegant event planner identity</li>
-      <li><strong>Whisk & Wonder</strong> – Cozy bakery branding with a soft tone</li>
-    </ul>
+    <section class="section">
+  <h2 class="section-title">My Clients</h2>
+  <div class="projects-grid">
 
-    <a href="contact.html" class="btn" style="margin-top: 1.5rem;">Let's Build Your Brand</a>
+    <div class="flip-card">
+      <div class="flip-inner">
+        <div class="flip-front project-card">
+          <img src="assets/logos/huda-interiors.png" alt="Huda Interiors Logo" class="project-logo">
+          <h4>Huda Interiors</h4>
+          <p>Giftbox</p>
+        </div>
+        <div class="flip-back" style="background-image: url('assets/.png');"></div>
+      </div>
+    </div>
+<div class="flip-card">
+      <div class="flip-inner">
+        <div class="flip-front project-card">
+          <img src="assets/logos/baskin-robbins.png" alt="BloomRoot Botanicals Logo" class="project-logo">
+          <h4>Baskin robbins</h4>
+          <p>Gondola branding</p>
+        </div>
+        <div class="flip-back" style="background-image: url('assets/6.png');"></div>
+      </div>
+    </div>
+        <div class="flip-card">
+      <div class="flip-inner">
+        <div class="flip-front project-card">
+          <img src="assets/logos/bloomroot.png" alt="BloomRoot Botanicals Logo" class="project-logo">
+          <h4>BloomRoot Botanicals</h4>
+          <p>Product Label · Packaging</p>
+        </div>
+        <div class="flip-back" style="background-image: url('assets/br.png');"></div>
+      </div>
+    </div>
 
+       <div class="flip-card">
+      <div class="flip-inner">
+        <div class="flip-front project-card">
+          <img src="assets/logos/playnest.png" alt="PlayNest Preschool Logo" class="project-logo">
+          <h4>PlayNest Preschool</h4>
+          <p>Booklet</p>
+        </div>
+        <div class="flip-back" style="background-image: url('assets/49.png');"></div>
+      </div>
+    </div>
+
+    <div class="flip-card">
+      <div class="flip-inner">
+        <div class="flip-front project-card">
+          <img src="assets/logos/vibecore.png" alt="VibeCore Studios Logo" class="project-logo">
+          <h4>VibeCore Studios</h4>
+          <p>Towel</p>
+        </div>
+        <div class="flip-back" style="background-image: url('assets/56.png');"></div>
+      </div>
+    </div>
+
+    <div class="flip-card">
+      <div class="flip-inner">
+        <div class="flip-front project-card">
+          <img src="assets/logos/wanderthread.png" alt="Wander Thread Logo" class="project-logo">
+          <h4>Wander Thread</h4>
+          <p>Tags · Mini Catalogue</p>
+        </div>
+        <div class="flip-back" style="background-image: url('assets/wt.png');"></div>
+      </div>
+    </div>
+
+ 
+    <div class="flip-card">
+      <div class="flip-inner">
+        <div class="flip-front project-card">
+          <img src="assets/logos/lumiere.png" alt="Lumiere Wellness Logo" class="project-logo">
+          <h4>Lumiere Wellness Lounge</h4>
+          <p>Wellness Journal </p>
+        </div>
+        <div class="flip-back" style="background-image: url('assets/85.png');"></div>
+      </div>
+    </div>
+
+    <div class="flip-card">
+      <div class="flip-inner">
+        <div class="flip-front project-card">
+          <img src="assets/logos/lumos.png" alt="Little Lumos Logo" class="project-logo">
+          <h4>Little Lumos Books</h4>
+          <p>Book Cover</p>
+        </div>
+        <div class="flip-back" style="background-image: url('assets/88.png');"></div>
+      </div>
+    </div>
   </div>
+  <div class="cta-block">
+  <h3>Your Brand, Elevated</h3>
+  <p>Complete visual identity kits, promo materials, and digital branding — built to communicate your message with clarity and style.</p>
+  <a href="contact.html" class="btn">Let's Build Your Brand</a>
+</div>
+
 </section>
 
+   
   <footer>
   <h3>Let’s Connect</h3>
   <p>Email: <a href="mailto:sumayyaafaq.sa@gmail.com">sumayyaafaq.sa@gmail.com</a></p>
