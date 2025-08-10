@@ -34,26 +34,8 @@ document.addEventListener("DOMContentLoaded", () => {
       navLinks.classList.toggle('show');
     });
   }
-  
-document.querySelectorAll('.carousel-container').forEach(container => {
-    const carousel = container.querySelector('.carousel');
-    const prevBtn = container.querySelector('.prev');
-    const nextBtn = container.querySelector('.next');
 
-    prevBtn.addEventListener('click', () => {
-      carousel.scrollBy({
-        left: -carousel.clientWidth,
-        behavior: 'smooth'
-      });
-    });
 
-    nextBtn.addEventListener('click', () => {
-      carousel.scrollBy({
-        left: carousel.clientWidth,
-        behavior: 'smooth'
-      });
-    });
-  });
 
 function filterSelection(category, event) {
   const items = document.querySelectorAll('.filter-item');
@@ -70,3 +52,34 @@ function filterSelection(category, event) {
     event.target.classList.add('active');
   }
 }
+  // ---- CAROUSEL FUNCTIONALITY ----
+  document.querySelectorAll('.carousel-container').forEach(container => {
+    const carousel = container.querySelector('.carousel');
+    const prevBtn = container.querySelector('.carousel-btn.prev');
+    const nextBtn = container.querySelector('.carousel-btn.next');
+    const firstImg = carousel.querySelector('img');
+
+    if (!carousel || !firstImg) return; // skip if missing
+
+    function getScrollAmount() {
+      // Grab computed gap value directly
+      const style = window.getComputedStyle(carousel);
+      const gap = parseInt(style.gap) || 16;
+      return firstImg.offsetWidth + gap;
+    }
+
+    prevBtn.addEventListener('click', () => {
+      carousel.scrollBy({
+        left: -getScrollAmount(),
+        behavior: 'smooth'
+      });
+    });
+
+    nextBtn.addEventListener('click', () => {
+      carousel.scrollBy({
+        left: getScrollAmount(),
+        behavior: 'smooth'
+      });
+    });
+  });
+});
