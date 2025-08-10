@@ -399,76 +399,7 @@ h2 {
   text-align: left;
 }
 
-.carousel {
-  display: flex;
-  gap: 1rem;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  padding-bottom: 1rem;
-  scrollbar-width: none; /* Firefox */
-}
 
-.carousel::-webkit-scrollbar {
-  display: none; /* Chrome */
-}
-
-.carousel img {
-  height: 200px;
-  aspect-ratio: 16/9;
-  border-radius: 8px;
-  flex: 0 0 auto;
-  scroll-snap-align: start;
-  object-fit: cover;
-  transition: transform 0.3s ease;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-}
-
-.carousel img:hover {
-  transform: scale(1.08);
-  z-index: 2;
-}
-.carousel-container {
-  position: relative;
-  margin-bottom: 3rem;
-}
-
-.carousel-btn {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background-color: #f15ea4;
-  color: white;
-  border: none;
-  padding: 0.5rem 1rem;
-  font-size: 1.5rem;
-  border-radius: 50%;
-  cursor: pointer;
-  z-index: 5;
-  opacity: 0.8;
-  transition: background 0.3s ease;
-}
-
-.carousel-btn:hover {
-  background-color: #d94a92;
-}
-
-.carousel-btn.prev {
-  left: -10px;
-}
-
-.carousel-btn.next {
-  right: -10px;
-}
-#project-proposal .carousel img {
-  height: 200px;
-  aspect-ratio: 9/16;
-  border-radius: 8px;
-  flex: 0 0 auto;
-  scroll-snap-align: start;
-  object-fit: cover;
-  transition: transform 0.3s ease;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-}
 .gallery-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -543,5 +474,84 @@ h2 {
 /* OPTIONAL: Smooth fade in/out */
 .filter-item {
   transition: all 0.3s ease;
+}
+
+.carousel::-webkit-scrollbar {
+  display: none; /* Chrome */
+}
+
+.carousel img {
+  height: 200px;
+  aspect-ratio: 16/9;
+  border-radius: 8px;
+  flex: 0 0 auto;
+  scroll-snap-align: start;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.carousel img:hover {
+  transform: scale(1.08);
+  z-index: 2;
+}
+
+.carousel-container {
+  max-width: 100%; /* keep inside page */
+  overflow: hidden; /* hide offscreen parts if using buttons */
+  position: relative; /* <-- Added: needed for absolutely positioned buttons */
+}
+
+.carousel {
+  display: flex;
+  gap: 1rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding-bottom: 1rem;
+  scrollbar-width: none;
+
+  /* Added padding so buttons don’t overlap/hide slides */
+  padding-left: 2.5rem;
+  padding-right: 2.5rem;
+}
+
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: #f15ea4;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  font-size: 1.5rem;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 5;
+  opacity: 0.8;
+  transition: background 0.3s ease;
+}
+
+.carousel-btn:hover {
+  background-color: #d94a92;
+}
+
+/* Changed from negative left/right to positive values inside container */
+.carousel-btn.prev {
+  left: 10px; /* from -10px */
+}
+
+.carousel-btn.next {
+  right: 10px; /* from -10px */
+}
+
+#project-proposal .carousel img {
+  height: 200px;
+  aspect-ratio: 9/16;
+  border-radius: 8px;
+  flex: 0 0 auto;
+  scroll-snap-align: start;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
