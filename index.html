@@ -4,281 +4,495 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Sumayya Afaq | Designer & Developer</title>
-  <link rel="stylesheet" href="style.css" />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap">
-  <script defer src="script.js"></script>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-<style>
-.services-row {
-  display: flex;
-  justify-content: center;
-  gap: 1.5rem;
-  flex-wrap: wrap;
-  margin-top: 2rem;
-}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-.service-block {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 120px;
-}
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #fefcfb;
+      color: #1e1e2a;
+      line-height: 1.5;
+      scroll-behavior: smooth;
+    }
 
-.glass-card {
-  width: 100%;
-  height: 120px;
-  background: rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(14px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  border-radius: 20px;
-  overflow: hidden;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease;
-}
+    /* Navbar */
+    header {
+      background-color: #ffffff;
+      padding: 1rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+    }
 
-.glass-card:hover {
-  transform: translateY(-6px);
-}
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1280px;
+      margin: auto;
+    }
 
-.glass-card img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
+    .logo {
+      font-weight: 700;
+      font-size: 1.5rem;
+      background: linear-gradient(135deg, #c44569, #e66767);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
 
-.service-label {
-  margin-top: 0.5rem;
-  font-weight: 500;
-  font-size: 0.9rem;
-  text-align: center;
-  color: #333;
-}
-.dropdown {
-  position: relative;
-}
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+    }
 
-.dropdown-menu {
-  display: none;
-  position: absolute;
-  top: 100%;
-  right: 0;
-  background-color: #fde6e8; /* Light pink like navbar */
-  border: 1px solid #f8bbd0;
-  min-width: 200px;
-  z-index: 999;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
-}
+    .nav-links a {
+      text-decoration: none;
+      color: #2d2f36;
+      font-weight: 500;
+      transition: color 0.2s ease;
+    }
 
-.dropdown-menu li {
-  display: block;
-}
+    .nav-links a:hover {
+      color: #c44569;
+    }
 
-.dropdown-menu a {
-  color: black; /* Dark pink text */
-  padding: 0.75rem 1.2rem;
-  display: block;
-  text-decoration: none;
-  transition: background 0.3s ease;
-  white-space: nowrap;
-}
+    /* Dropdown */
+    .dropdown {
+      position: relative;
+    }
 
-.dropdown-menu a:hover {
-  background-color: #fce4ec;
-}
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      right: 0;
+      background-color: #ffffff;
+      border: 1px solid #f0e2e2;
+      border-radius: 12px;
+      min-width: 210px;
+      z-index: 999;
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.06);
+      padding: 0.5rem 0;
+    }
 
-.dropdown:hover .dropdown-menu,
-.dropdown-menu:hover {
-  display: block;
-}
-.card {
-  background-color: #fde6e8;
-  color: black;
-  border: none;
-  padding: 0.7rem 1rem;
-  text-align: center;
-  border-radius: 6px;
-  font-size: 0.95rem;
-  box-shadow: 2px 2px 6px rgba(0,0,0,0.1);
-  transition: transform 0.2s ease, background-color 0.3s;
-}
-.card:hover {
-  background-color: #fce4ec; /* dark pink on hover */
-  transform: translateY(-4px);
-  box-shadow: 4px 4px 12px rgba(0,0,0,0.15);
-}
-</style>
+    .dropdown-menu li {
+      display: block;
+    }
+
+    .dropdown-menu a {
+      padding: 0.6rem 1.2rem;
+      display: block;
+      color: #2d2f36;
+    }
+
+    .dropdown-menu a:hover {
+      background-color: #fdf2f2;
+      color: #c44569;
+    }
+
+    .dropdown:hover .dropdown-menu,
+    .dropdown-menu:hover {
+      display: block;
+    }
+
+    .hamburger {
+      display: none;
+      font-size: 1.8rem;
+      cursor: pointer;
+      color: #c44569;
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        background: white;
+        position: absolute;
+        top: 70px;
+        right: 0;
+        width: 100%;
+        text-align: center;
+        padding: 1.5rem;
+        gap: 1rem;
+        box-shadow: 0 12px 20px rgba(0,0,0,0.05);
+      }
+      .nav-links.show {
+        display: flex;
+      }
+      .hamburger {
+        display: block;
+      }
+      .navbar {
+        flex-wrap: wrap;
+      }
+    }
+
+    /* Hero */
+    .hero {
+      padding: 5rem 2rem;
+      text-align: center;
+      background: linear-gradient(145deg, #fff7f5 0%, #fff0ed 100%);
+      border-bottom: 1px solid #ffe2dc;
+    }
+
+    .hero h1 {
+      font-size: 3.2rem;
+      font-weight: 700;
+      color: #2d2f36;
+      margin-bottom: 1rem;
+    }
+
+    .typewriter {
+      font-size: 1.8rem;
+      font-weight: 500;
+      background: linear-gradient(120deg, #c44569, #e66767);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      border-right: 2px solid #c44569;
+      display: inline-block;
+      white-space: nowrap;
+      overflow: hidden;
+      margin-bottom: 1rem;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      max-width: 600px;
+      margin: 1rem auto 0;
+      color: #4a4e5c;
+    }
+
+    .hero-buttons {
+      margin-top: 2rem;
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 0.8rem 1.8rem;
+      border-radius: 40px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.25s ease;
+      background-color: #c44569;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn-outline {
+      background-color: transparent;
+      border: 1.5px solid #c44569;
+      color: #c44569;
+    }
+
+    .btn-outline:hover {
+      background-color: #c44569;
+      color: white;
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 14px rgba(196, 69, 105, 0.25);
+    }
+
+    /* Section */
+    .section {
+      padding: 5rem 2rem;
+      max-width: 1280px;
+      margin: auto;
+    }
+
+    .section-title {
+      font-size: 2.2rem;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 3rem;
+      color: #2d2f36;
+      position: relative;
+    }
+
+    .section-title:after {
+      content: '';
+      display: block;
+      width: 60px;
+      height: 4px;
+      background: linear-gradient(90deg, #c44569, #e66767);
+      margin: 0.8rem auto 0;
+      border-radius: 4px;
+    }
+
+    /* About */
+    .about-content {
+      background: #ffffff;
+      padding: 2.5rem;
+      border-radius: 28px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.02);
+      border: 1px solid #f7e6e3;
+    }
+
+    .about-content p {
+      margin-bottom: 1.2rem;
+      font-size: 1rem;
+      color: #3b3e48;
+    }
+
+    /* Skills grid (pills) */
+    .skills-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin: 1.5rem 0;
+    }
+
+    .pill {
+      background-color: #fef0ee;
+      padding: 0.4rem 1rem;
+      border-radius: 40px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: #c44569;
+    }
+
+    /* Services grid */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+
+    .service-card {
+      background: white;
+      border-radius: 24px;
+      padding: 2rem 1.5rem;
+      text-align: center;
+      transition: all 0.25s ease;
+      border: 1px solid #f1e1de;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+    }
+
+    .service-card:hover {
+      transform: translateY(-6px);
+      border-color: #f2cfc8;
+      box-shadow: 0 20px 30px -12px rgba(196, 69, 105, 0.12);
+    }
+
+    .service-emoji {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .service-card h3 {
+      font-size: 1.4rem;
+      margin-bottom: 0.75rem;
+      color: #2d2f36;
+    }
+
+    .service-card p {
+      color: #5b5f6e;
+      font-size: 0.95rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .explore-link {
+      font-weight: 600;
+      color: #c44569;
+      text-decoration: none;
+    }
+
+    /* Projects preview */
+    .projects-preview {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 2rem;
+      margin-top: 1rem;
+    }
+
+    .project-card {
+      background: white;
+      border-radius: 20px;
+      padding: 1.5rem;
+      border-left: 4px solid #c44569;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+      transition: transform 0.2s;
+    }
+
+    .project-card h4 {
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .project-card a {
+      color: #c44569;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.9rem;
+    }
+
+    .cta-block {
+      text-align: center;
+      background: linear-gradient(135deg, #fdf3f0, #fff7f5);
+      border-radius: 32px;
+      padding: 3rem 2rem;
+      margin: 2rem 0;
+    }
+
+    footer {
+      background-color: #1e1e2a;
+      color: #b9b9c3;
+      text-align: center;
+      padding: 3rem 2rem;
+    }
+
+    footer a {
+      color: #df8f8f;
+      text-decoration: none;
+    }
+
+    .socials a {
+      margin: 0 0.75rem;
+    }
+
+    @media (max-width: 640px) {
+      .hero h1 { font-size: 2.2rem; }
+      .typewriter { font-size: 1.2rem; white-space: normal; border-right: none; }
+      .section-title { font-size: 1.8rem; }
+    }
+  </style>
+  <script defer>
+    document.addEventListener("DOMContentLoaded", () => {
+      // typewriter
+      const typeEl = document.querySelector('.typewriter');
+      if (typeEl) {
+        const roles = ['Web Developer', 'UI Designer', 'Brand Stylist', 'EdTech Creator'];
+        let roleIndex = 0, charIndex = 0, isDeleting = false;
+        const type = () => {
+          const current = roles[roleIndex];
+          typeEl.textContent = isDeleting ? current.substring(0, charIndex--) : current.substring(0, charIndex++);
+          let speed = isDeleting ? 70 : 130;
+          if (!isDeleting && charIndex === current.length) { speed = 1500; isDeleting = true; }
+          else if (isDeleting && charIndex === 0) { isDeleting = false; roleIndex = (roleIndex + 1) % roles.length; speed = 400; }
+          setTimeout(type, speed);
+        };
+        type();
+      }
+      // mobile menu
+      const hamburger = document.querySelector('.hamburger');
+      const navLinks = document.querySelector('.nav-links');
+      if (hamburger && navLinks) {
+        hamburger.addEventListener('click', () => navLinks.classList.toggle('show'));
+      }
+    });
+  </script>
 </head>
-<body class="home-page">
+<body>
 
-  <!-- Navbar -->
-  <header>
-    <nav class="navbar">
-      <div class="logo">Sumayya Afaq</div>
-      <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li class="dropdown">
-  <a href="services.html">Services ▾</a>
-  <ul class="dropdown-menu">
-    <li><a href="web-development.html">Web Development</a></li>
-    <li><a href="app-development.html">App Development</a></li>
-    <li><a href="design.html">Graphic Design</a></li>
-    <li><a href="branding.html">Branding</a></li>
-    <li><a href="socialmedia.html">Social Media</a></li>
-    <li><a href="presentations.html">Presentations</a></li>
-	<li><a href="wedding-stationery.html">Wedding stationary</a></li>
-  </ul>
-</li>
-        <li><a href="portfolio.html">Design Portfolio</a></li>
-          <li><a href="index.html#about">About</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
+<header>
+  <nav class="navbar">
+    <div class="logo">Sumayya Afaq</div>
+    <div class="hamburger">☰</div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li class="dropdown">
+        <a href="services.html">Services ▾</a>
+        <ul class="dropdown-menu">
+          <li><a href="web-development.html">Web Development</a></li>
+          <li><a href="app-development.html">App Development</a></li>
+          <li><a href="design.html">Graphic Design</a></li>
+          <li><a href="branding.html">Branding</a></li>
+          <li><a href="socialmedia.html">Social Media</a></li>
+          <li><a href="presentations.html">Presentations</a></li>
+        </ul>
+      </li>
+      <li><a href="portfolio.html">Design Portfolio</a></li>
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+</header>
 
-  <!-- Hero Section -->
-  <section class="hero" id="home">
-    <h1>Hi, I’m Sumayya Afaq</h1>
-    <h2 class="typewriter"></h2>
-    <p>I blend thoughtful design with purposeful development to create impactful brands and user-friendly websites.</p>
-    <div class="hero-buttons" style="margin-top: 2rem;">
-  <a href="contact.html" class="btn">Hire Me</a>
-  <a href="assets/SumayyaAfaq_Resume.pdf" class="btn" download>Download Resume</a>
-</div>
-  </section>
+<!-- Hero -->
+<section class="hero" id="home">
+  <h1>Hi, I’m Sumayya Afaq</h1>
+  <div class="typewriter"></div>
+  <p>Design-led web development • Brand storytelling • EdTech & creativity</p>
+  <div class="hero-buttons">
+    <a href="contact.html" class="btn">Hire Me</a>
+    <a href="assets/SumayyaAfaq_Resume.pdf" class="btn btn-outline" download>Download Resume</a>
+  </div>
+</section>
 
-  
-  <section class="section" id="about">
+<!-- About -->
+<section class="section" id="about">
   <h2 class="section-title">About Me</h2>
   <div class="about-content">
-    <p>I’m Sumayya — a web developer with a flair for visual storytelling and a deep appreciation for clean, purposeful design.</p>
-
-    <p>My work blends front-end development skills with graphic design, allowing me to craft both functional websites and beautiful brand visuals. I code in multiple languages, create brand identities, and build digital experiences that feel intentional and human.</p>
-
-    <p>My background is as colorful as my palette — with roots in religious education, a stint as a school radio jockey (thanks to my multilingual edge!), and a passion for making learning and tech more accessible. I'm especially driven by projects that support education, creativity, and women-led businesses.</p>
-
-    <p>Let’s create something meaningful — whether it’s a brand, a website, or your next big idea.</p>
-  </div>
-  <section class="section" style="padding: 2rem;">
-  <h2 style="font-size: 1.8rem; color: #f15ea4;">Programming Languages</h2>
-  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 1rem;">
-    <div class="card">Java</div>
-    <div class="card">HTML/XML</div>
-    <div class="card">MySQL</div>
-    <div class="card">C++</div>
-    <div class="card">C#</div>
-    <div class="card">CSS</div>
-    <div class="card">JavaScript</div>
-    <div class="card">PHP</div>
-    <div class="card">Laravel</div>
-    <div class="card">Python</div>
-  </div>
-
-  <h2 style="font-size: 1.8rem; color: #f15ea4; margin-top: 3rem;">Software Proficiency</h2>
-  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 1rem;">
-    <div class="card">NetBeans</div>
-    <div class="card">Visual Studio</div>
-    <div class="card">VS Code</div>
-    <div class="card">Android Studio</div>
-    <div class="card">Adobe Illustrator</div>
-    <div class="card">Adobe Photoshop</div>
-    <div class="card">After Effects</div>
-    <div class="card">InDesign</div>
-    <div class="card">Premiere Pro</div>
-    <div class="card">Lightroom</div>
-    <div class="card">3D Blender</div>
-    <div class="card">Canva</div>
-  </div>
-
-  <h2 style="font-size: 1.8rem; color: #f15ea4; margin-top: 3rem;">Languages</h2>
-  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 1rem;">
-    <div class="card">English</div>
-    <div class="card">Urdu</div>
-    <div class="card">Hindi</div>
-    <div class="card">Bengali</div>
-    <div class="card">Arabic</div>
-    <div class="card">Brohi</div>
+    <p>I’m Sumayya — a web developer with a flair for visual storytelling and a deep appreciation for clean, purposeful design. My work blends front-end development with graphic design, allowing me to craft both functional websites and beautiful brand visuals.</p>
+    <p>I code in multiple languages, build brand identities, and create digital experiences that feel intentional and human. My background also includes 8+ years of teaching, religious education, and a passion for making learning and tech more accessible.</p>
+    <div class="skills-pills">
+      <span class="pill">Java</span> <span class="pill">HTML/CSS</span> <span class="pill">JavaScript</span>
+      <span class="pill">PHP/Laravel</span> <span class="pill">Python</span> <span class="pill">Figma</span>
+      <span class="pill">Adobe Creative Suite</span> <span class="pill">UI/UX</span>
+    </div>
+    <p>💬 Fluent in English, Urdu, Hindi, Bengali, Arabic, Brohi – because design speaks every language.</p>
   </div>
 </section>
 
-  <section class="section services-section" id="services">
-  <h2 class="section-title">My Services</h2>
-  <div class="services-row">
-    <div class="service-block">
-      <a href="web-development.html" class="glass-card">
-        <img src="assets/web-dev.png" alt="Web Development" />
-      </a>
-      <p class="service-label">Web Development</p>
-    </div>
-    <div class="service-block">
-      <a href="app-development.html" class="glass-card">
-        <img src="assets/app-dev.png" alt="App Development" />
-      </a>
-      <p class="service-label">App Development</p>
-    </div>
-    <div class="service-block">
-      <a href="design.html" class="glass-card">
-        <img src="assets/graphic-design.png" alt="Graphic Design" />
-      </a>
-      <p class="service-label">Graphic Design</p>
-    </div>
-    <div class="service-block">
-      <a href="branding.html" class="glass-card">
-        <img src="assets/branding.png" alt="Branding" />
-      </a>
-      <p class="service-label">Branding</p>
-    </div>
-    <div class="service-block">
-      <a href="socialmedia.html" class="glass-card">
-        <img src="assets/social-media.png" alt="Social Media" />
-      </a>
-      <p class="service-label">Social Media</p>
-    </div>
-    <div class="service-block">
-      <a href="presentations.html" class="glass-card">
-        <img src="assets/presentation.png" alt="Presentations" />
-      </a>
-      <p class="service-label">Presentations</p>
-    </div>
-	<div class="service-block">
-      <a href="wedding-stationery.html" class="glass-card">
-        <img src="assets/wedding.png" alt="Presentations" />
-      </a>
-      <p class="service-label">Wedding Stationary</p>
-    </div>
+<!-- Services -->
+<section class="section" id="services">
+  <h2 class="section-title">What I Do</h2>
+  <div class="services-grid">
+    <div class="service-card"><div class="service-emoji">🌐</div><h3>Web Development</h3><p>Responsive, custom-coded websites and landing pages that perform and delight.</p><a href="web-development.html" class="explore-link">Learn more →</a></div>
+    <div class="service-card"><div class="service-emoji">📱</div><h3>App Development</h3><p>Front-end prototypes & interactive interfaces for startups and educators.</p><a href="app-development.html" class="explore-link">Learn more →</a></div>
+    <div class="service-card"><div class="service-emoji">🎨</div><h3>Graphic Design</h3><p>Social media graphics, flyers, brochures — scroll-stopping visuals.</p><a href="design.html" class="explore-link">Learn more →</a></div>
+    <div class="service-card"><div class="service-emoji">🏷️</div><h3>Branding</h3><p>Complete identity kits, logos, packaging, and brand guidelines.</p><a href="branding.html" class="explore-link">Learn more →</a></div>
+    <div class="service-card"><div class="service-emoji">📸</div><h3>Social Media</h3><p>Content calendars, post designs, and brand-aligned storytelling.</p><a href="socialmedia.html" class="explore-link">Learn more →</a></div>
+    <div class="service-card"><div class="service-emoji">📊</div><h3>Presentations</h3><p>Pitch decks, company profiles, academic reports — clear & compelling.</p><a href="presentations.html" class="explore-link">Learn more →</a></div>
   </div>
 </section>
 
-  <!-- Contact CTA -->
-  <section class="cta-block" id="cta">
-  <h3>Let’s Bring Your Ideas to Life</h3>
-  <p>Whether it's a fresh brand, a beautiful website, or meaningful design — I’m here to help you build it with intention.</p>
+<!-- Featured Projects -->
+<section class="section">
+  <h2 class="section-title">Featured Work</h2>
+  <div class="projects-preview">
+    <div class="project-card"><h4>Tutoring Simplified</h4><p>Interactive educational website with worksheets & quizzes. 94% user satisfaction.</p><a href="https://sumayyaafaq.github.io/tutoringsimplified.com/" target="_blank">Live Demo →</a></div>
+    <div class="project-card"><h4>Secure Sisters</h4><p>Women’s safety app prototype (Android) with SOS & geofencing.</p><a href="#">Case study →</a></div>
+    <div class="project-card"><h4>BloomRoot Botanicals</h4><p>Complete branding + product label & packaging design.</p><a href="branding.html">View project →</a></div>
+    <div class="project-card"><h4>English Made Easy</h4><p>Java-based e-learning platform with pronunciation quizzes.</p><a href="https://github.com/sumayyaafaq/english-made-easy" target="_blank">GitHub →</a></div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-block">
+  <h3 style="font-size: 1.8rem; margin-bottom: 0.5rem;">Let’s Create Something Meaningful</h3>
+  <p style="margin-bottom: 1.5rem;">Whether it’s a brand, a website, or your next big idea — I’d love to help.</p>
   <a href="contact.html" class="btn">Start Your Project</a>
 </section>
-</section>
 
-  <!-- Footer -->
-  <footer>
-    <h3>Let’s Connect</h3>
-    <p>Email: <a href="mailto:sumayyaafaq.sa@gmail.com">sumayyaafaq.sa@gmail.com</a></p>
-    <p>WhatsApp: <a href="https://wa.me/971556703700" target="_blank">+971 55 670 3700</a></p>
-    <div class="socials">
-      <a href="https://github.com/sumayyaafaq" target="_blank">GitHub</a>
-      <a href="https://www.linkedin.com/in/sumayya-afaq-975a22266" target="_blank">LinkedIn</a>
-      <a href="#">Instagram (Coming Soon)</a>
-    </div>
-    <p class="copyright">© 2019 Sumayya Afaq</p>
-  </footer>
+<!-- Footer -->
+<footer>
+  <h3 style="color: white;">Let’s Connect</h3>
+  <p>Email: <a href="mailto:sumayyaafaq.sa@gmail.com">sumayyaafaq.sa@gmail.com</a> | WhatsApp: <a href="https://wa.me/971556703700" target="_blank">+971 55 670 3700</a></p>
+  <div class="socials">
+    <a href="https://github.com/sumayyaafaq" target="_blank">GitHub</a>
+    <a href="https://www.linkedin.com/in/sumayya-afaq-975a22266" target="_blank">LinkedIn</a>
+    <a href="#">Instagram (Coming Soon)</a>
+  </div>
+  <p class="copyright" style="margin-top: 1.5rem;">© 2025 Sumayya Afaq. All rights reserved.</p>
+</footer>
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
