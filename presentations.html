@@ -4,47 +4,375 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Presentations & Reports | Sumayya Afaq</title>
-  <link rel="stylesheet" href="style.css" />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap">
-  <script defer src="script.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #fefcfb;
+      color: #1e1e2a;
+      line-height: 1.5;
+    }
+
+    /* Navbar */
+    header {
+      background-color: #ffffff;
+      padding: 1rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1280px;
+      margin: auto;
+    }
+
+    .logo {
+      font-weight: 700;
+      font-size: 1.5rem;
+      background: linear-gradient(135deg, #c44569, #e66767);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #2d2f36;
+      font-weight: 500;
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      color: #c44569;
+    }
+
+    .dropdown {
+      position: relative;
+    }
+
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      right: 0;
+      background-color: #ffffff;
+      border: 1px solid #f0e2e2;
+      border-radius: 12px;
+      min-width: 210px;
+      z-index: 999;
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.06);
+      padding: 0.5rem 0;
+    }
+
+    .dropdown-menu li {
+      display: block;
+    }
+
+    .dropdown-menu a {
+      padding: 0.6rem 1.2rem;
+      display: block;
+      color: #2d2f36;
+    }
+
+    .dropdown-menu a:hover {
+      background-color: #fdf2f2;
+      color: #c44569;
+    }
+
+    .dropdown:hover .dropdown-menu,
+    .dropdown-menu:hover {
+      display: block;
+    }
+
+    .hamburger {
+      display: none;
+      font-size: 1.8rem;
+      cursor: pointer;
+      color: #c44569;
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        background: white;
+        position: absolute;
+        top: 70px;
+        right: 0;
+        width: 100%;
+        text-align: center;
+        padding: 1.5rem;
+        gap: 1rem;
+        box-shadow: 0 12px 20px rgba(0,0,0,0.05);
+      }
+      .nav-links.show {
+        display: flex;
+      }
+      .hamburger {
+        display: block;
+      }
+      .navbar {
+        flex-wrap: wrap;
+      }
+    }
+
+    /* Hero */
+    .service-hero {
+      background: linear-gradient(145deg, #fff7f5 0%, #fff0ed 100%);
+      padding: 4rem 2rem;
+      text-align: center;
+      border-bottom: 1px solid #ffe2dc;
+    }
+
+    .service-hero h1 {
+      font-size: 2.8rem;
+      font-weight: 700;
+      color: #2d2f36;
+      margin-bottom: 1rem;
+    }
+
+    .service-hero p {
+      font-size: 1.2rem;
+      max-width: 700px;
+      margin: 0 auto;
+      color: #4a4e5c;
+    }
+
+    /* Section */
+    .section {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 4rem 2rem;
+    }
+
+    .section-title {
+      font-size: 2rem;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 2.5rem;
+      color: #2d2f36;
+      position: relative;
+    }
+
+    .section-title:after {
+      content: '';
+      display: block;
+      width: 60px;
+      height: 4px;
+      background: linear-gradient(90deg, #c44569, #e66767);
+      margin: 0.8rem auto 0;
+      border-radius: 4px;
+    }
+
+    .about-text {
+      background: white;
+      border-radius: 28px;
+      padding: 2rem;
+      border: 1px solid #f1e1de;
+      margin-bottom: 3rem;
+    }
+
+    .about-text p {
+      margin-bottom: 1rem;
+      font-size: 1rem;
+      color: #3b3e48;
+    }
+
+    .about-text ul {
+      margin: 1rem 0 1rem 1.5rem;
+    }
+
+    .about-text li {
+      margin: 0.5rem 0;
+    }
+
+    /* Carousels */
+    .presentation-section {
+      margin: 3rem 0;
+    }
+
+    .presentation-section h2 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: #c44569;
+      margin: 2rem 0 1rem;
+      border-left: 4px solid #c44569;
+      padding-left: 1rem;
+    }
+
+    .carousel-container {
+      position: relative;
+      margin: 1rem 0 2rem;
+    }
+
+    .carousel {
+      display: flex;
+      gap: 1rem;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      padding-bottom: 1rem;
+      scrollbar-width: thin;
+    }
+
+    .carousel::-webkit-scrollbar {
+      height: 6px;
+    }
+
+    .carousel img {
+      height: 180px;
+      width: auto;
+      border-radius: 12px;
+      flex: 0 0 auto;
+      scroll-snap-align: start;
+      object-fit: cover;
+      transition: transform 0.2s;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+
+    .carousel img:hover {
+      transform: scale(1.02);
+    }
+
+    /* Special aspect ratio for project proposal (portrait) */
+    #project-proposal .carousel img {
+      height: 200px;
+      aspect-ratio: 9/16;
+    }
+
+    .carousel-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: #c44569;
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      font-size: 1.5rem;
+      border-radius: 50%;
+      cursor: pointer;
+      z-index: 5;
+      opacity: 0.8;
+      transition: background 0.2s;
+    }
+
+    .carousel-btn:hover {
+      background-color: #a53658;
+      opacity: 1;
+    }
+
+    .carousel-btn.prev {
+      left: -10px;
+    }
+
+    .carousel-btn.next {
+      right: -10px;
+    }
+
+    .cta-block {
+      text-align: center;
+      background: linear-gradient(135deg, #fdf3f0, #fff7f5);
+      border-radius: 32px;
+      padding: 3rem 2rem;
+      margin-top: 3rem;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 0.8rem 1.8rem;
+      border-radius: 40px;
+      font-weight: 600;
+      text-decoration: none;
+      background-color: #c44569;
+      color: white;
+      transition: all 0.25s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 14px rgba(196, 69, 105, 0.25);
+    }
+
+    footer {
+      background-color: #1e1e2a;
+      color: #b9b9c3;
+      text-align: center;
+      padding: 3rem 2rem;
+    }
+
+    footer a {
+      color: #df8f8f;
+      text-decoration: none;
+    }
+
+    .socials a {
+      margin: 0 0.75rem;
+    }
+
+    @media (max-width: 640px) {
+      .service-hero h1 { font-size: 2rem; }
+      .section-title { font-size: 1.6rem; }
+      .carousel img { height: 120px; }
+      .carousel-btn { padding: 0.3rem 0.7rem; font-size: 1.2rem; }
+    }
+  </style>
 </head>
 <body>
 
-<!-- Header -->
 <header>
-    <nav class="navbar">
-      <div class="logo">Sumayya Afaq</div>
-      <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li class="dropdown">
-  <a href="services.html">Services ▾</a>
-  <ul class="dropdown-menu">
-    <li><a href="web-development.html">Web Development</a></li>
-    <li><a href="app-development.html">App Development</a></li>
-    <li><a href="design.html">Graphic Design</a></li>
-    <li><a href="branding.html">Branding</a></li>
-    <li><a href="socialmedia.html">Social Media</a></li>
-    <li><a href="presentations.html">Presentations</a></li>
-	<li><a href="wedding-stationery.html">Wedding stationary</a></li>
-  </ul>
-</li>
-        <li><a href="portfolio.html">Design Portfolio</a></li>
-          <li><a href="index.html#about">About</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
+  <nav class="navbar">
+    <div class="logo">Sumayya Afaq</div>
+    <div class="hamburger">☰</div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li class="dropdown">
+        <a href="services.html">Services ▾</a>
+        <ul class="dropdown-menu">
+          <li><a href="web-development.html">Web Development</a></li>
+          <li><a href="app-development.html">App Development</a></li>
+          <li><a href="design.html">Graphic Design</a></li>
+          <li><a href="branding.html">Branding</a></li>
+          <li><a href="socialmedia.html">Social Media</a></li>
+          <li><a href="presentations.html">Presentations</a></li>
+        </ul>
+      </li>
+      <li><a href="portfolio.html">Design Portfolio</a></li>
+      <li><a href="projects.html">Web Projects</a></li>
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+</header>
 
-<!-- Presentations Section -->
+<div class="service-hero">
+  <h1>Presentations & Reports</h1>
+  <p>Clear, compelling, and visually engaging — I turn your ideas into presentations that captivate and convince.</p>
+</div>
+
 <section class="section">
-  <h1 class="section-title">Presentations & Reports</h1>
+  <div class="about-text">
+    <p class="quote" style="font-size: 1.2rem; font-weight: 500; color: #c44569;">“Your slides should say what your voice can’t.”</p>
+    <p>I design presentations that communicate clearly and captivate your audience. Whether it's a business pitch, training module, or academic report — I combine structure, visuals, and story flow for maximum impact.</p>
 
-  <div class="about-content">
-    <p class="quote">“Your slides should say what your voice can’t.”</p>
-
-    <p>I design presentations that communicate clearly and captivate your audience. Whether it’s a business pitch, training module, or academic report — I combine structure, visuals, and story flow for maximum impact.</p>
-
-    <h3>What I Offer:</h3>
+    <h3 style="margin: 1.5rem 0 0.5rem;">What I Offer:</h3>
     <ul>
       <li>PowerPoint, Google Slides, Canva Presentations</li>
       <li>Academic & research-based report layouts</li>
@@ -52,7 +380,7 @@
       <li>Company profiles and service overviews</li>
     </ul>
 
-    <h3>Design Features:</h3>
+    <h3 style="margin: 1.5rem 0 0.5rem;">Design Features:</h3>
     <ul>
       <li>Branded themes & color schemes</li>
       <li>Infographics & visual hierarchy</li>
@@ -60,293 +388,198 @@
       <li>Editable formats provided</li>
     </ul>
 
-    <h3>Who It’s For:</h3>
-    <ul>
-      <li>Entrepreneurs and small businesses</li>
-      <li>Educators, trainers & students</li>
-      <li>Nonprofits, researchers & professionals</li>
-    </ul>
-<section class="presentation-section">
-<h2>Secure Sisters Project Proposal</h2>
-  <div class="carousel-container" id= "project-proposal">
-  <button class="carousel-btn prev">&#8249;</button>
-  <div class="carousel">
-		<img src="ppt/p1.png" alt="Slide 1">
-		<img src="ppt/p2.png" alt="Slide 2">
-		<img src="ppt/p3.png" alt="Slide 3">
-		<img src="ppt/p4.png" alt="Slide 4">
-		<img src="ppt/p5.png" alt="Slide 5">
-		<img src="ppt/p6.png" alt="Slide 6">
-		<img src="ppt/p7.png" alt="Slide 7">
-		<img src="ppt/p8.png" alt="Slide 8">
-		<img src="ppt/p9.png" alt="Slide 9">
-		<img src="ppt/p10.png" alt="Slide 10">
-		<img src="ppt/p11.png" alt="Slide 11">
-		<img src="ppt/p12.png" alt="Slide 12">
-		<img src="ppt/p13.png" alt="Slide 13">
-		<img src="ppt/p14.png" alt="Slide 14">
-		<img src="ppt/p15.png" alt="Slide 15">
-	</div>
-	<button class="carousel-btn next">&#8250;</button>
-</div>
-  <h2>Secure Sisters</h2>
-  <div class="carousel-container">
-  <button class="carousel-btn prev">&#8249;</button>
-  <div class="carousel">
-		<img src="ppt/1.png" alt="Slide 1">
-		<img src="ppt/2.png" alt="Slide 2">
-		<img src="ppt/3.png" alt="Slide 3">
-		<img src="ppt/4.png" alt="Slide 4">
-		<img src="ppt/5.png" alt="Slide 5">
-		<img src="ppt/6.png" alt="Slide 6">
-		<img src="ppt/7.png" alt="Slide 7">
-		<img src="ppt/8.png" alt="Slide 8">
-	</div>
-	<button class="carousel-btn next">&#8250;</button>
-</div>
-  <h2>JS Prime Enterprises(Company profile presentation) </h2>
-  <div class="carousel-container">
-  <button class="carousel-btn prev">&#8249;</button>
-  <div class="carousel">
-		<img src="ppt/9.png" alt="Slide 1">
-		<img src="ppt/10.png" alt="Slide 2">
-		<img src="ppt/11.png" alt="Slide 3">
-		<img src="ppt/12.png" alt="Slide 4">
-		<img src="ppt/13.png" alt="Slide 5">
-		<img src="ppt/14.png" alt="Slide 6">
-		<img src="ppt/15.png" alt="Slide 7">
-		<img src="ppt/16.png" alt="Slide 8">
-		<img src="ppt/17.png" alt="Slide 9">
-		<img src="ppt/18.png" alt="Slide 10">
-		<img src="ppt/19.png" alt="Slide 11">
-		<img src="ppt/20.png" alt="Slide 12">
-		<img src="ppt/21.png" alt="Slide 13">
-		<img src="ppt/22.png" alt="Slide 14">
-	</div>
-	<button class="carousel-btn next">&#8250;</button>
-</div>
+    <p><strong>Turnaround time:</strong> Basic decks in 1–2 days. In-depth presentations or reports within 3–5 days depending on content volume.</p>
+  </div>
 
-  <h2>Noon AI</h2>
-  <div class="carousel-container">
-  <button class="carousel-btn prev">&#8249;</button>
-  <div class="carousel">
-		<img src="ppt/23.png" alt="Slide 1">
-		<img src="ppt/24.png" alt="Slide 2">
-		<img src="ppt/25.png" alt="Slide 3">
-		<img src="ppt/26.png" alt="Slide 4">
-		<img src="ppt/27.png" alt="Slide 5">
-		<img src="ppt/28.png" alt="Slide 6">
-		<img src="ppt/29.png" alt="Slide 7">
-		<img src="ppt/30.png" alt="Slide 8">
-		<img src="ppt/31.png" alt="Slide 9">
-		<img src="ppt/32.png" alt="Slide 10">
-		<img src="ppt/33.png" alt="Slide 11">
-		<img src="ppt/34.png" alt="Slide 12">
-		<img src="ppt/35.png" alt="Slide 13">
-		<img src="ppt/36.png" alt="Slide 14">
-	</div>
-	<button class="carousel-btn next">&#8250;</button>
-</div>
-<h2>How UEM transforms your business? </h2>
-  <div class="carousel-container">
-  <button class="carousel-btn prev">&#8249;</button>
-  <div class="carousel">
-		<img src="ppt/37.png" alt="Slide 1">
-		<img src="ppt/38.png" alt="Slide 2">
-		<img src="ppt/39.png" alt="Slide 3">
-		<img src="ppt/40.png" alt="Slide 4">
-		<img src="ppt/41.png" alt="Slide 5">
-		<img src="ppt/42.png" alt="Slide 6">
-		<img src="ppt/43.png" alt="Slide 7">
-		<img src="ppt/44.png" alt="Slide 8">
-		<img src="ppt/45.png" alt="Slide 9">
-		<img src="ppt/46.png" alt="Slide 10">
-				
-	</div>
-	<button class="carousel-btn next">&#8250;</button>
-</div>
-<h2>Customer Churn prediction</h2>
-  <div class="carousel-container">
-  <button class="carousel-btn prev">&#8249;</button>
-  <div class="carousel">
-		<img src="ppt/47.png" alt="Slide 1">
-		<img src="ppt/48.png" alt="Slide 2">
-		<img src="ppt/49.png" alt="Slide 3">
-		<img src="ppt/50.png" alt="Slide 4">
-		<img src="ppt/51.png" alt="Slide 5">
-		<img src="ppt/52.png" alt="Slide 6">
-		<img src="ppt/53.png" alt="Slide 7">
-		<img src="ppt/54.png" alt="Slide 8">
-		<img src="ppt/55.png" alt="Slide 9">
-		<img src="ppt/56.png" alt="Slide 10">
-		<img src="ppt/57.png" alt="Slide 11">
-		<img src="ppt/58.png" alt="Slide 12">
-	</div>
-	<button class="carousel-btn next">&#8250;</button>
-</div>
-<h2>ADNOC Growth strategy</h2>
-  <div class="carousel-container">
-  <button class="carousel-btn prev">&#8249;</button>
-  <div class="carousel">
-		<img src="ppt/59.png" alt="Slide 1">
-		<img src="ppt/60.png" alt="Slide 2">
-		<img src="ppt/61.png" alt="Slide 3">
-		<img src="ppt/62.png" alt="Slide 4">
-		<img src="ppt/63.png" alt="Slide 5">
-		<img src="ppt/64.png" alt="Slide 6">
-		<img src="ppt/65.png" alt="Slide 7">
-		<img src="ppt/66.png" alt="Slide 8">
-		<img src="ppt/67.png" alt="Slide 9">
-		<img src="ppt/68.png" alt="Slide 10">
-		<img src="ppt/69.png" alt="Slide 11">
-		
-	</div>
-	<button class="carousel-btn next">&#8250;</button>
-</div>
-<h2>Unilever Ethics, CSR</h2>
-  <div class="carousel-container">
-  <button class="carousel-btn prev">&#8249;</button>
-  <div class="carousel">
-		<img src="ppt/70.png" alt="Slide 1">
-		<img src="ppt/71.png" alt="Slide 2">
-		<img src="ppt/72.png" alt="Slide 3">
-		<img src="ppt/73.png" alt="Slide 4">
-		<img src="ppt/74.png" alt="Slide 5">
-		<img src="ppt/75.png" alt="Slide 6">
-		<img src="ppt/76.png" alt="Slide 7">
-		<img src="ppt/77.png" alt="Slide 8">
-		<img src="ppt/78.png" alt="Slide 9">
-		<img src="ppt/79.png" alt="Slide 10">
-				
-	</div>
-	<button class="carousel-btn next">&#8250;</button>
-</div>
-<h2>IHRM Global Practices</h2>
-  <div class="carousel-container">
-  <button class="carousel-btn prev">&#8249;</button>
-  <div class="carousel">
-		<img src="ppt/80.png" alt="Slide 1">
-		<img src="ppt/81.png" alt="Slide 2">
-		<img src="ppt/82.png" alt="Slide 3">
-		<img src="ppt/83.png" alt="Slide 4">
-		<img src="ppt/84.png" alt="Slide 5">
-		<img src="ppt/85.png" alt="Slide 6">
-		<img src="ppt/86.png" alt="Slide 7">
-		<img src="ppt/87.png" alt="Slide 8">
-		<img src="ppt/88.png" alt="Slide 9">
-		<img src="ppt/89.png" alt="Slide 10">
-		<img src="ppt/90.png" alt="Slide 11">
-		<img src="ppt/91.png" alt="Slide 12">
-		<img src="ppt/92.png" alt="Slide 13">
-		<img src="ppt/93.png" alt="Slide 14">
-		<img src="ppt/94.png" alt="Slide 15">
-				
-	</div>
-	<button class="carousel-btn next">&#8250;</button>
-</div>
+  <div class="presentation-section">
+    <h2>Secure Sisters Project Proposal</h2>
+    <div class="carousel-container" id="project-proposal">
+      <button class="carousel-btn prev">‹</button>
+      <div class="carousel">
+        <img src="ppt/p1.png" alt="Slide 1"><img src="ppt/p2.png" alt="Slide 2"><img src="ppt/p3.png" alt="Slide 3"><img src="ppt/p4.png" alt="Slide 4">
+        <img src="ppt/p5.png" alt="Slide 5"><img src="ppt/p6.png" alt="Slide 6"><img src="ppt/p7.png" alt="Slide 7"><img src="ppt/p8.png" alt="Slide 8">
+        <img src="ppt/p9.png" alt="Slide 9"><img src="ppt/p10.png" alt="Slide 10"><img src="ppt/p11.png" alt="Slide 11"><img src="ppt/p12.png" alt="Slide 12">
+        <img src="ppt/p13.png" alt="Slide 13"><img src="ppt/p14.png" alt="Slide 14"><img src="ppt/p15.png" alt="Slide 15">
+      </div>
+      <button class="carousel-btn next">›</button>
+    </div>
 
-<h2>Legal Framework of Businesses</h2>
-  <div class="carousel-container">
-  <button class="carousel-btn prev">&#8249;</button>
-  <div class="carousel">
-		<img src="ppt/95.png" alt="Slide 1">
-		<img src="ppt/96.png" alt="Slide 2">
-		<img src="ppt/97.png" alt="Slide 3">
-		<img src="ppt/98.png" alt="Slide 4">
-		<img src="ppt/99.png" alt="Slide 5">
-		<img src="ppt/100.png" alt="Slide 6">
-		<img src="ppt/101.png" alt="Slide 7">
-		<img src="ppt/102.png" alt="Slide 8">
-		<img src="ppt/103.png" alt="Slide 9">
-		<img src="ppt/104.png" alt="Slide 10">
-		<img src="ppt/105.png" alt="Slide 11">
-		<img src="ppt/106.png" alt="Slide 12">
-		<img src="ppt/107.png" alt="Slide 13">
-					
-	</div>
-	<button class="carousel-btn next">&#8250;</button>
-</div>
-<h2>UAE's Role in regional conflict resolution</h2>
-  <div class="carousel-container">
-  <button class="carousel-btn prev">&#8249;</button>
-  <div class="carousel">
-		<img src="ppt/108.png" alt="Slide 1">
-		<img src="ppt/109.png" alt="Slide 2">
-		<img src="ppt/110.png" alt="Slide 3">
-		<img src="ppt/111.png" alt="Slide 4">
-		<img src="ppt/112.png" alt="Slide 5">
-		<img src="ppt/113.png" alt="Slide 6">
-		<img src="ppt/114.png" alt="Slide 7">
-		<img src="ppt/115.png" alt="Slide 8">
-		<img src="ppt/116.png" alt="Slide 9">
-		<img src="ppt/117.png" alt="Slide 10">
-					
-	</div>
-	<button class="carousel-btn next">&#8250;</button>
-</div>
-<h2>Internship Report</h2>
-  <div class="carousel-container">
-  <button class="carousel-btn prev">&#8249;</button>
-  <div class="carousel">
-		<img src="ppt/118.png" alt="Slide 1">
-		<img src="ppt/119.png" alt="Slide 2">
-		<img src="ppt/120.png" alt="Slide 3">
-		<img src="ppt/121.png" alt="Slide 4">
-		<img src="ppt/122.png" alt="Slide 5">
-		<img src="ppt/123.png" alt="Slide 6">
-		<img src="ppt/124.png" alt="Slide 7">
-		<img src="ppt/125.png" alt="Slide 8">
-		<img src="ppt/126.png" alt="Slide 9">
-					
-	</div>
-	<button class="carousel-btn next">&#8250;</button>
-</div>
-<h2>Internship Report</h2>
-  <div class="carousel-container">
-  <button class="carousel-btn prev">&#8249;</button>
-  <div class="carousel">
-		<img src="ppt/127.png" alt="Slide 1">
-		<img src="ppt/128.png" alt="Slide 2">
-		<img src="ppt/129.png" alt="Slide 3">
-		<img src="ppt/130.png" alt="Slide 4">
-		<img src="ppt/131.png" alt="Slide 5">
-		<img src="ppt/132.png" alt="Slide 6">
-		<img src="ppt/133.png" alt="Slide 7">
-		<img src="ppt/134.png" alt="Slide 8">
-		<img src="ppt/135.png" alt="Slide 9">
-					
-	</div>
-	<button class="carousel-btn next">&#8250;</button>
-</div>
+    <h2>Secure Sisters App Presentation</h2>
+    <div class="carousel-container">
+      <button class="carousel-btn prev">‹</button>
+      <div class="carousel">
+        <img src="ppt/1.png" alt="Slide 1"><img src="ppt/2.png" alt="Slide 2"><img src="ppt/3.png" alt="Slide 3"><img src="ppt/4.png" alt="Slide 4">
+        <img src="ppt/5.png" alt="Slide 5"><img src="ppt/6.png" alt="Slide 6"><img src="ppt/7.png" alt="Slide 7"><img src="ppt/8.png" alt="Slide 8">
+      </div>
+      <button class="carousel-btn next">›</button>
+    </div>
 
-</section>
-    <h3>Turnaround Time:</h3>
-    <p>Basic decks in 1–2 days. In-depth presentations or reports within 3–5 days depending on content volume.</p>
+    <h2>JS Prime Enterprises (Company Profile)</h2>
+    <div class="carousel-container">
+      <button class="carousel-btn prev">‹</button>
+      <div class="carousel">
+        <img src="ppt/9.png" alt="Slide 1"><img src="ppt/10.png" alt="Slide 2"><img src="ppt/11.png" alt="Slide 3"><img src="ppt/12.png" alt="Slide 4">
+        <img src="ppt/13.png" alt="Slide 5"><img src="ppt/14.png" alt="Slide 6"><img src="ppt/15.png" alt="Slide 7"><img src="ppt/16.png" alt="Slide 8">
+        <img src="ppt/17.png" alt="Slide 9"><img src="ppt/18.png" alt="Slide 10"><img src="ppt/19.png" alt="Slide 11"><img src="ppt/20.png" alt="Slide 12">
+        <img src="ppt/21.png" alt="Slide 13"><img src="ppt/22.png" alt="Slide 14">
+      </div>
+      <button class="carousel-btn next">›</button>
+    </div>
 
-    <div class="cta-block">
-  <h3>Make Every Slide Count</h3>
-  <p>From investor decks to proposals, I craft presentations that are clear, compelling, and visually engaging — page by page.</p>
-  <a href="contact.html" class="btn">Request a Custom Deck</a>
-</div>
+    <h2>Noon AI</h2>
+    <div class="carousel-container">
+      <button class="carousel-btn prev">‹</button>
+      <div class="carousel">
+        <img src="ppt/23.png" alt="Slide 1"><img src="ppt/24.png" alt="Slide 2"><img src="ppt/25.png" alt="Slide 3"><img src="ppt/26.png" alt="Slide 4">
+        <img src="ppt/27.png" alt="Slide 5"><img src="ppt/28.png" alt="Slide 6"><img src="ppt/29.png" alt="Slide 7"><img src="ppt/30.png" alt="Slide 8">
+        <img src="ppt/31.png" alt="Slide 9"><img src="ppt/32.png" alt="Slide 10"><img src="ppt/33.png" alt="Slide 11"><img src="ppt/34.png" alt="Slide 12">
+        <img src="ppt/35.png" alt="Slide 13"><img src="ppt/36.png" alt="Slide 14">
+      </div>
+      <button class="carousel-btn next">›</button>
+    </div>
 
+    <h2>How UEM Transforms Your Business?</h2>
+    <div class="carousel-container">
+      <button class="carousel-btn prev">‹</button>
+      <div class="carousel">
+        <img src="ppt/37.png" alt="Slide 1"><img src="ppt/38.png" alt="Slide 2"><img src="ppt/39.png" alt="Slide 3"><img src="ppt/40.png" alt="Slide 4">
+        <img src="ppt/41.png" alt="Slide 5"><img src="ppt/42.png" alt="Slide 6"><img src="ppt/43.png" alt="Slide 7"><img src="ppt/44.png" alt="Slide 8">
+        <img src="ppt/45.png" alt="Slide 9"><img src="ppt/46.png" alt="Slide 10">
+      </div>
+      <button class="carousel-btn next">›</button>
+    </div>
+
+    <h2>Customer Churn Prediction</h2>
+    <div class="carousel-container">
+      <button class="carousel-btn prev">‹</button>
+      <div class="carousel">
+        <img src="ppt/47.png" alt="Slide 1"><img src="ppt/48.png" alt="Slide 2"><img src="ppt/49.png" alt="Slide 3"><img src="ppt/50.png" alt="Slide 4">
+        <img src="ppt/51.png" alt="Slide 5"><img src="ppt/52.png" alt="Slide 6"><img src="ppt/53.png" alt="Slide 7"><img src="ppt/54.png" alt="Slide 8">
+        <img src="ppt/55.png" alt="Slide 9"><img src="ppt/56.png" alt="Slide 10"><img src="ppt/57.png" alt="Slide 11"><img src="ppt/58.png" alt="Slide 12">
+      </div>
+      <button class="carousel-btn next">›</button>
+    </div>
+
+    <h2>ADNOC Growth Strategy</h2>
+    <div class="carousel-container">
+      <button class="carousel-btn prev">‹</button>
+      <div class="carousel">
+        <img src="ppt/59.png" alt="Slide 1"><img src="ppt/60.png" alt="Slide 2"><img src="ppt/61.png" alt="Slide 3"><img src="ppt/62.png" alt="Slide 4">
+        <img src="ppt/63.png" alt="Slide 5"><img src="ppt/64.png" alt="Slide 6"><img src="ppt/65.png" alt="Slide 7"><img src="ppt/66.png" alt="Slide 8">
+        <img src="ppt/67.png" alt="Slide 9"><img src="ppt/68.png" alt="Slide 10"><img src="ppt/69.png" alt="Slide 11">
+      </div>
+      <button class="carousel-btn next">›</button>
+    </div>
+
+    <h2>Unilever Ethics & CSR</h2>
+    <div class="carousel-container">
+      <button class="carousel-btn prev">‹</button>
+      <div class="carousel">
+        <img src="ppt/70.png" alt="Slide 1"><img src="ppt/71.png" alt="Slide 2"><img src="ppt/72.png" alt="Slide 3"><img src="ppt/73.png" alt="Slide 4">
+        <img src="ppt/74.png" alt="Slide 5"><img src="ppt/75.png" alt="Slide 6"><img src="ppt/76.png" alt="Slide 7"><img src="ppt/77.png" alt="Slide 8">
+        <img src="ppt/78.png" alt="Slide 9"><img src="ppt/79.png" alt="Slide 10">
+      </div>
+      <button class="carousel-btn next">›</button>
+    </div>
+
+    <h2>IHRM Global Practices</h2>
+    <div class="carousel-container">
+      <button class="carousel-btn prev">‹</button>
+      <div class="carousel">
+        <img src="ppt/80.png" alt="Slide 1"><img src="ppt/81.png" alt="Slide 2"><img src="ppt/82.png" alt="Slide 3"><img src="ppt/83.png" alt="Slide 4">
+        <img src="ppt/84.png" alt="Slide 5"><img src="ppt/85.png" alt="Slide 6"><img src="ppt/86.png" alt="Slide 7"><img src="ppt/87.png" alt="Slide 8">
+        <img src="ppt/88.png" alt="Slide 9"><img src="ppt/89.png" alt="Slide 10"><img src="ppt/90.png" alt="Slide 11"><img src="ppt/91.png" alt="Slide 12">
+        <img src="ppt/92.png" alt="Slide 13"><img src="ppt/93.png" alt="Slide 14"><img src="ppt/94.png" alt="Slide 15">
+      </div>
+      <button class="carousel-btn next">›</button>
+    </div>
+
+    <h2>Legal Framework of Businesses</h2>
+    <div class="carousel-container">
+      <button class="carousel-btn prev">‹</button>
+      <div class="carousel">
+        <img src="ppt/95.png" alt="Slide 1"><img src="ppt/96.png" alt="Slide 2"><img src="ppt/97.png" alt="Slide 3"><img src="ppt/98.png" alt="Slide 4">
+        <img src="ppt/99.png" alt="Slide 5"><img src="ppt/100.png" alt="Slide 6"><img src="ppt/101.png" alt="Slide 7"><img src="ppt/102.png" alt="Slide 8">
+        <img src="ppt/103.png" alt="Slide 9"><img src="ppt/104.png" alt="Slide 10"><img src="ppt/105.png" alt="Slide 11"><img src="ppt/106.png" alt="Slide 12">
+        <img src="ppt/107.png" alt="Slide 13">
+      </div>
+      <button class="carousel-btn next">›</button>
+    </div>
+
+    <h2>UAE's Role in Regional Conflict Resolution</h2>
+    <div class="carousel-container">
+      <button class="carousel-btn prev">‹</button>
+      <div class="carousel">
+        <img src="ppt/108.png" alt="Slide 1"><img src="ppt/109.png" alt="Slide 2"><img src="ppt/110.png" alt="Slide 3"><img src="ppt/111.png" alt="Slide 4">
+        <img src="ppt/112.png" alt="Slide 5"><img src="ppt/113.png" alt="Slide 6"><img src="ppt/114.png" alt="Slide 7"><img src="ppt/115.png" alt="Slide 8">
+        <img src="ppt/116.png" alt="Slide 9"><img src="ppt/117.png" alt="Slide 10">
+      </div>
+      <button class="carousel-btn next">›</button>
+    </div>
+
+    <h2>Internship Report 1</h2>
+    <div class="carousel-container">
+      <button class="carousel-btn prev">‹</button>
+      <div class="carousel">
+        <img src="ppt/118.png" alt="Slide 1"><img src="ppt/119.png" alt="Slide 2"><img src="ppt/120.png" alt="Slide 3"><img src="ppt/121.png" alt="Slide 4">
+        <img src="ppt/122.png" alt="Slide 5"><img src="ppt/123.png" alt="Slide 6"><img src="ppt/124.png" alt="Slide 7"><img src="ppt/125.png" alt="Slide 8">
+        <img src="ppt/126.png" alt="Slide 9">
+      </div>
+      <button class="carousel-btn next">›</button>
+    </div>
+
+    <h2>Internship Report 2</h2>
+    <div class="carousel-container">
+      <button class="carousel-btn prev">‹</button>
+      <div class="carousel">
+        <img src="ppt/127.png" alt="Slide 1"><img src="ppt/128.png" alt="Slide 2"><img src="ppt/129.png" alt="Slide 3"><img src="ppt/130.png" alt="Slide 4">
+        <img src="ppt/131.png" alt="Slide 5"><img src="ppt/132.png" alt="Slide 6"><img src="ppt/133.png" alt="Slide 7"><img src="ppt/134.png" alt="Slide 8">
+        <img src="ppt/135.png" alt="Slide 9">
+      </div>
+      <button class="carousel-btn next">›</button>
+    </div>
+  </div>
+
+  <div class="cta-block">
+    <h3 style="font-size: 1.8rem; margin-bottom: 0.5rem;">Make Every Slide Count</h3>
+    <p style="margin-bottom: 1.5rem;">From investor decks to proposals, I craft presentations that are clear, compelling, and visually engaging — page by page.</p>
+    <a href="contact.html" class="btn">Request a Custom Deck →</a>
   </div>
 </section>
 
-<!-- Footer -->
 <footer>
-  <h3>Let’s Connect</h3>
-  <p>Email: <a href="mailto:sumayyaafaq.sa@gmail.com">sumayyaafaq.sa@gmail.com</a></p>
-  <p>WhatsApp: <a href="https://wa.me/971556703700" target="_blank">+971 55 670 3700</a></p>
-
+  <h3 style="color: white;">Let’s Connect</h3>
+  <p>Email: <a href="mailto:sumayyaafaq.sa@gmail.com">sumayyaafaq.sa@gmail.com</a> | WhatsApp: <a href="https://wa.me/971556703700" target="_blank">+971 55 670 3700</a></p>
   <div class="socials">
     <a href="https://github.com/sumayyaafaq" target="_blank">GitHub</a>
     <a href="https://www.linkedin.com/in/sumayya-afaq-975a22266" target="_blank">LinkedIn</a>
-    <a href="#" target="_blank">Instagram (Coming Soon)</a>
+    <a href="#">Instagram (Coming Soon)</a>
   </div>
-
-  <p class="copyright">© 2019 Sumayya Afaq. All rights reserved.</p>
+  <p class="copyright" style="margin-top: 1.5rem;">© 2025 Sumayya Afaq. All rights reserved.</p>
 </footer>
 
+<script>
+  // Mobile nav toggle
+  const hamburger = document.querySelector('.hamburger');
+  const navLinks = document.querySelector('.nav-links');
+  if (hamburger && navLinks) {
+    hamburger.addEventListener('click', () => navLinks.classList.toggle('show'));
+  }
+
+  // Carousel functionality for all containers
+  document.querySelectorAll('.carousel-container').forEach(container => {
+    const carousel = container.querySelector('.carousel');
+    const prevBtn = container.querySelector('.prev');
+    const nextBtn = container.querySelector('.next');
+    if (carousel && prevBtn && nextBtn) {
+      prevBtn.addEventListener('click', () => {
+        carousel.scrollBy({ left: -carousel.clientWidth, behavior: 'smooth' });
+      });
+      nextBtn.addEventListener('click', () => {
+        carousel.scrollBy({ left: carousel.clientWidth, behavior: 'smooth' });
+      });
+    }
+  });
+</script>
 </body>
 </html>
-
