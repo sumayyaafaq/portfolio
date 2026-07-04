@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Graphic Design Portfolio | Sumayya Afaq</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Inter', sans-serif; background-color: #fefcfb; color: #1e1e2a; line-height: 1.5; }
+    header { background-color: #ffffff; padding: 1rem 2rem; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 12px rgba(0,0,0,0.04); }
+    .navbar { display: flex; justify-content: space-between; align-items: center; max-width: 1280px; margin: auto; }
+    .logo { font-weight: 700; font-size: 1.5rem; background: linear-gradient(135deg, #c44569, #e66767); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .nav-links { list-style: none; display: flex; gap: 2rem; }
+    .nav-links a { text-decoration: none; color: #2d2f36; font-weight: 500; transition: color 0.2s ease; }
+    .nav-links a:hover { color: #c44569; }
+    .dropdown { position: relative; }
+    .dropdown-menu { display: none; position: absolute; top: 100%; right: 0; background-color: #ffffff; border: 1px solid #f0e2e2; border-radius: 12px; min-width: 220px; z-index: 999; box-shadow: 0 12px 24px rgba(0,0,0,0.06); padding: 0.5rem 0; }
+    .dropdown-menu li { display: block; }
+    .dropdown-menu a { padding: 0.6rem 1.2rem; display: block; color: #2d2f36; }
+    .dropdown-menu a:hover { background-color: #fdf2f2; color: #c44569; }
+    .dropdown:hover .dropdown-menu, .dropdown-menu:hover { display: block; }
+    .hamburger { display: none; font-size: 1.8rem; cursor: pointer; color: #c44569; }
+    @media (max-width: 768px) {
+      .nav-links { display: none; flex-direction: column; background: white; position: absolute; top: 70px; right: 0; width: 100%; text-align: center; padding: 1.5rem; gap: 1rem; box-shadow: 0 12px 20px rgba(0,0,0,0.05); }
+      .nav-links.show { display: flex; }
+      .hamburger { display: block; }
+    }
+    .page-header { background: linear-gradient(145deg, #fff7f5 0%, #fff0ed 100%); padding: 3rem 2rem; text-align: center; border-bottom: 1px solid #ffe2dc; }
+    .page-header h1 { font-size: 2.8rem; font-weight: 700; color: #2d2f36; margin-bottom: 0.5rem; }
+    .page-header p { font-size: 1.1rem; color: #5b5f6e; max-width: 600px; margin: 0 auto; }
+    .section { max-width: 1280px; margin: 0 auto; padding: 3rem 2rem 5rem; }
+    .section-title { font-size: 2rem; font-weight: 700; text-align: center; margin-bottom: 2.5rem; color: #2d2f36; position: relative; }
+    .section-title:after { content: ''; display: block; width: 60px; height: 4px; background: linear-gradient(90deg, #c44569, #e66767); margin: 0.8rem auto 0; border-radius: 4px; }
+    .filter-buttons { text-align: center; margin-bottom: 2.5rem; display: flex; flex-wrap: wrap; justify-content: center; gap: 0.5rem; }
+    .filter-btn { background-color: #f8f0ee; border: none; color: #c44569; padding: 0.5rem 1.2rem; border-radius: 40px; font-weight: 500; cursor: pointer; transition: all 0.2s ease; font-family: inherit; font-size: 0.9rem; }
+    .filter-btn:hover, .filter-btn.active { background-color: #c44569; color: white; }
+    .gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1.2rem; }
+    .filter-item { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; border-radius: 20px; transition: all 0.3s ease; cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.03); border: 1px solid #f1e1de; }
+    .filter-item:hover { transform: scale(1.02); box-shadow: 0 12px 22px rgba(196,69,105,0.12); border-color: #f2cfc8; }
+    .modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.85); justify-content: center; align-items: center; cursor: pointer; }
+    .modal-content { max-width: 90%; max-height: 90%; border-radius: 16px; box-shadow: 0 20px 30px rgba(0,0,0,0.3); }
+    .close-modal { position: absolute; top: 20px; right: 30px; color: white; font-size: 2rem; font-weight: bold; cursor: pointer; }
+    footer { background-color: #1e1e2a; color: #b9b9c3; text-align: center; padding: 3rem 2rem; }
+    footer a { color: #df8f8f; text-decoration: none; }
+    .socials a { margin: 0 0.75rem; }
+
+    /* Floating WhatsApp */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 1000;
+      background-color: #25d366;
+      color: white;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 32px;
+      box-shadow: 0 4px 14px rgba(37, 211, 102, 0.4);
+      text-decoration: none;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .whatsapp-float:hover { transform: scale(1.1); box-shadow: 0 6px 20px rgba(37, 211, 102, 0.5); }
+    @media (max-width: 640px) { .gallery-grid { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 0.8rem; } .page-header h1 { font-size: 2rem; } }
+  </style>
+</head>
+<body>
+<header>
+  <nav class="navbar">
+    <div class="logo">Sumayya Afaq</div>
+    <div class="hamburger">☰</div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li class="dropdown"><a href="services.html">Services ▾</a>
+        <ul class="dropdown-menu">
+          <li><a href="web-development.html">Web Development</a></li>
+          <li><a href="app-development.html">App Development</a></li>
+          <li><a href="design.html">Graphic Design</a></li>
+          <li><a href="branding.html">Branding</a></li>
+          <li><a href="socialmedia.html">Social Media</a></li>
+          <li><a href="presentations.html">Presentations</a></li>
+          <li><a href="wedding-stationery.html">Wedding Stationery</a></li>
+          <li><a href="tutoring.html">In‑Person Tutoring</a></li>
+          <li><a href="career-documents.html">Career Documents</a></li>
+          <li><a href="teaching-resources.html">Teaching Resources</a></li>
+          <li><a href="excel-data.html">Excel & Data</a></li>
+        </ul>
+      </li>
+      <li><a href="portfolio.html">Design Portfolio</a></li>
+      <li><a href="projects.html">Web Projects</a></li>
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+<div class="page-header"><h1>Design Portfolio</h1><p>Logos, branding, social media graphics, and print materials — a visual journey of my work.</p></div>
+<section class="section">
+  <div class="filter-buttons" id="filterButtons">
+    <button class="filter-btn active" data-filter="all">All</button>
+    <button class="filter-btn" data-filter="logo">Logos</button>
+    <button class="filter-btn" data-filter="card">Business Cards</button>
+    <button class="filter-btn" data-filter="branding">Branding</button>
+    <button class="filter-btn" data-filter="social">Social Media</button>
+    <button class="filter-btn" data-filter="letterhead">Letterhead</button>
+    <button class="filter-btn" data-filter="invoice">Invoice</button>
+    <button class="filter-btn" data-filter="flyer">Flyer</button>
+    <button class="filter-btn" data-filter="Brochure">Brochure</button>
+  </div>
+  <div class="gallery-grid" id="galleryGrid">
+    <img src="assets/1.png" class="filter-item logo" alt="Design 1" data-cat="logo">
+    <img src="assets/2.png" class="filter-item card" alt="Design 2" data-cat="card">
+    <img src="assets/3.png" class="filter-item flyer" alt="Design 3" data-cat="flyer">
+    <img src="assets/4.png" class="filter-item" alt="Design 4" data-cat="other">
+    <img src="assets/5.png" class="filter-item branding" alt="Design 5" data-cat="branding">
+    <img src="assets/6.png" class="filter-item branding" alt="Design 6" data-cat="branding">
+    <img src="assets/T.png" class="filter-item logo" alt="Design 7" data-cat="logo">
+    <img src="assets/7.png" class="filter-item" alt="Design 7" data-cat="other">
+    <img src="assets/8.png" class="filter-item" alt="Design 8" data-cat="other">
+    <img src="assets/9.png" class="filter-item logo" alt="Design 9" data-cat="logo">
+    <img src="assets/10.png" class="filter-item card" alt="Design 10" data-cat="card">
+    <img src="assets/letterhead.png" class="filter-item letterhead" alt="letterhead" data-cat="letterhead">
+    <img src="assets/invoice.png" class="filter-item invoice" alt="invoice" data-cat="invoice">
+    <img src="assets/11.png" class="filter-item logo" alt="Design 11" data-cat="logo">
+    <img src="assets/12.png" class="filter-item" alt="Design 12" data-cat="other">
+    <img src="assets/13.png" class="filter-item logo" alt="Design 13" data-cat="logo">
+    <img src="assets/14.png" class="filter-item card" alt="Design 14" data-cat="card">
+    <img src="assets/15.png" class="filter-item" alt="Design 15" data-cat="other">
+    <img src="assets/16.png" class="filter-item letterhead" alt="Design 16" data-cat="letterhead">
+    <img src="assets/17.png" class="filter-item flyer" alt="Design 17" data-cat="flyer">
+    <img src="assets/18.png" class="filter-item" alt="Design 18" data-cat="other">
+    <img src="assets/19.png" class="filter-item invoice" alt="Design 19" data-cat="invoice">
+    <img src="assets/20.png" class="filter-item social" alt="Design 20" data-cat="social">
+    <img src="assets/21.png" class="filter-item logo" alt="Design 21" data-cat="logo">
+    <img src="assets/22.png" class="filter-item card" alt="Design 22" data-cat="card">
+    <img src="assets/23.png" class="filter-item Brochure" alt="Design 23" data-cat="Brochure">
+    <img src="assets/24.png" class="filter-item letterhead" alt="Design 24" data-cat="letterhead">
+    <img src="assets/25.png" class="filter-item flyer" alt="Design 25" data-cat="flyer">
+    <img src="assets/26.png" class="filter-item logo" alt="Design 26" data-cat="logo">
+    <img src="assets/27.png" class="filter-item card" alt="Design 27" data-cat="card">
+    <img src="assets/28.png" class="filter-item" alt="Design 28" data-cat="other">
+    <img src="assets/29.png" class="filter-item letterhead" alt="Design 29" data-cat="letterhead">
+    <img src="assets/30.png" class="filter-item flyer" alt="Design 30" data-cat="flyer">
+    <img src="assets/31.png" class="filter-item invoice" alt="Design 31" data-cat="invoice">
+    <img src="assets/32.png" class="filter-item Brochure" alt="Design 32" data-cat="Brochure">
+    <img src="assets/33.png" class="filter-item logo" alt="Design 33" data-cat="logo">
+    <img src="assets/34.png" class="filter-item card" alt="Design 34" data-cat="card">
+    <img src="assets/35.png" class="filter-item letterhead" alt="Design 35" data-cat="letterhead">
+    <img src="assets/36.png" class="filter-item" alt="Design 36" data-cat="other">
+    <img src="assets/37.png" class="filter-item Brochure" alt="Design 37" data-cat="Brochure">
+    <img src="assets/38.png" class="filter-item social" alt="Design 38" data-cat="social">
+    <img src="assets/39.png" class="filter-item logo" alt="Design 39" data-cat="logo">
+    <img src="assets/40.png" class="filter-item card" alt="Design 40" data-cat="card">
+    <img src="assets/41.png" class="filter-item invoice" alt="Design 41" data-cat="invoice">
+    <img src="assets/42.png" class="filter-item branding" alt="Design 42" data-cat="branding">
+    <img src="assets/43.png" class="filter-item branding" alt="Design 43" data-cat="branding">
+    <img src="assets/44.png" class="filter-item branding" alt="Design 44" data-cat="branding">
+    <img src="assets/45.png" class="filter-item logo" alt="Design 45" data-cat="logo">
+    <img src="assets/46.png" class="filter-item card" alt="Design 46" data-cat="card">
+    <img src="assets/47.png" class="filter-item flyer" alt="Design 47" data-cat="flyer">
+    <img src="assets/48.png" class="filter-item" alt="Design 48" data-cat="other">
+    <img src="assets/49.png" class="filter-item" alt="Design 49" data-cat="other">
+    <img src="assets/50.png" class="filter-item" alt="Design 50" data-cat="other">
+    <img src="assets/51.png" class="filter-item logo" alt="Design 51" data-cat="logo">
+    <img src="assets/52.png" class="filter-item card" alt="Design 52" data-cat="card">
+    <img src="assets/53.png" class="filter-item" alt="Design 53" data-cat="other">
+    <img src="assets/54.png" class="filter-item" alt="Design 54" data-cat="other">
+    <img src="assets/55.png" class="filter-item Brochure" alt="Design 55" data-cat="Brochure">
+    <img src="assets/56.png" class="filter-item branding" alt="Design 56" data-cat="branding">
+    <img src="assets/57.png" class="filter-item logo" alt="Design 57" data-cat="logo">
+    <img src="assets/58.png" class="filter-item card" alt="Design 58" data-cat="card">
+    <img src="assets/59.png" class="filter-item invoice" alt="Design 59" data-cat="invoice">
+    <img src="assets/60.png" class="filter-item branding" alt="Design 60" data-cat="branding">
+    <img src="assets/61.png" class="filter-item branding" alt="Design 61" data-cat="branding">
+    <img src="assets/62.png" class="filter-item logo" alt="Design 62" data-cat="logo">
+    <img src="assets/63.png" class="filter-item card" alt="Design 63" data-cat="card">
+    <img src="assets/64.png" class="filter-item letterhead" alt="Design 64" data-cat="letterhead">
+    <img src="assets/65.png" class="filter-item invoice" alt="Design 65" data-cat="invoice">
+    <img src="assets/66.png" class="filter-item" alt="Design 66" data-cat="other">
+    <img src="assets/67.png" class="filter-item" alt="Design 67" data-cat="other">
+    <img src="assets/68.png" class="filter-item logo" alt="Design 68" data-cat="logo">
+    <img src="assets/69.png" class="filter-item card" alt="Design 69" data-cat="card">
+    <img src="assets/70.png" class="filter-item" alt="Design 70" data-cat="other">
+    <img src="assets/71.png" class="filter-item social" alt="Design 71" data-cat="social">
+    <img src="assets/72.png" class="filter-item" alt="Design 72" data-cat="other">
+    <img src="assets/73.png" class="filter-item" alt="Design 73" data-cat="other">
+    <img src="assets/74.png" class="filter-item logo" alt="Design 74" data-cat="logo">
+    <img src="assets/75.png" class="filter-item card" alt="Design 75" data-cat="card">
+    <img src="assets/76.png" class="filter-item" alt="Design 76" data-cat="other">
+    <img src="assets/77.png" class="filter-item invoice" alt="Design 77" data-cat="invoice">
+    <img src="assets/78.png" class="filter-item flyer" alt="Design 78" data-cat="flyer">
+    <img src="assets/79.png" class="filter-item" alt="Design 79" data-cat="other">
+    <img src="assets/80.png" class="filter-item logo" alt="Design 80" data-cat="logo">
+    <img src="assets/81.png" class="filter-item card" alt="Design 81" data-cat="card">
+    <img src="assets/82.png" class="filter-item" alt="Design 82" data-cat="other">
+    <img src="assets/83.png" class="filter-item" alt="Design 83" data-cat="other">
+    <img src="assets/84.png" class="filter-item Brochure" alt="Design 84" data-cat="Brochure">
+    <img src="assets/85.png" class="filter-item branding" alt="Design 85" data-cat="branding">
+    <img src="assets/86.png" class="filter-item logo" alt="Design 86" data-cat="logo">
+    <img src="assets/87.png" class="filter-item card" alt="Design 87" data-cat="card">
+    <img src="assets/88.png" class="filter-item branding" alt="Design 88" data-cat="branding">
+    <img src="assets/89.png" class="filter-item" alt="Design 89" data-cat="other">
+    <img src="assets/90.png" class="filter-item" alt="Design 90" data-cat="other">
+    <img src="assets/91.png" class="filter-item" alt="Design 91" data-cat="other">
+  </div>
+</section>
+<a href="https://wa.me/971556703700" target="_blank" class="whatsapp-float" aria-label="WhatsApp">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="32" height="32" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+<footer>
+  <h3 style="color: white;">Let's Connect</h3>
+  <p>Email: <a href="mailto:sumayyaafaq.sa@gmail.com">sumayyaafaq.sa@gmail.com</a> | WhatsApp: <a href="https://wa.me/971556703700" target="_blank">+971 55 670 3700</a></p>
+  <div class="socials"><a href="https://github.com/sumayyaafaq" target="_blank">GitHub</a><a href="https://www.linkedin.com/in/sumayya-afaq-975a22266" target="_blank">LinkedIn</a><a href="#">Instagram</a></div>
+  <p class="copyright">© 2025 Sumayya Afaq</p>
+</footer>
+<script>
+  const hamburger = document.querySelector('.hamburger');
+  const navLinks = document.querySelector('.nav-links');
+  if (hamburger && navLinks) hamburger.addEventListener('click', () => navLinks.classList.toggle('show'));
+
+  // Filtering logic
+  const filterButtons = document.querySelectorAll('.filter-btn');
+  const galleryItems = document.querySelectorAll('.filter-item');
+
+  function filterGallery(category) {
+    galleryItems.forEach(item => {
+      const itemCat = item.getAttribute('data-cat');
+      item.style.display = (category === 'all' || itemCat === category) ? 'block' : 'none';
+    });
+  }
+
+  filterButtons.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      const category = btn.getAttribute('data-filter');
+      filterButtons.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      filterGallery(category);
+    });
+  });
+
+  // Ensure all images have data-cat
+  galleryItems.forEach(img => {
+    if (!img.getAttribute('data-cat')) {
+      const classes = img.className;
+      if (classes.includes('logo')) img.setAttribute('data-cat', 'logo');
+      else if (classes.includes('card')) img.setAttribute('data-cat', 'card');
+      else if (classes.includes('branding')) img.setAttribute('data-cat', 'branding');
+      else if (classes.includes('social')) img.setAttribute('data-cat', 'social');
+      else if (classes.includes('letterhead')) img.setAttribute('data-cat', 'letterhead');
+      else if (classes.includes('invoice')) img.setAttribute('data-cat', 'invoice');
+      else if (classes.includes('flyer')) img.setAttribute('data-cat', 'flyer');
+      else if (classes.includes('Brochure')) img.setAttribute('data-cat', 'Brochure');
+      else img.setAttribute('data-cat', 'other');
+    }
+  });
+
+  // Lightbox modal
+  const modal = document.createElement('div');
+  modal.className = 'modal';
+  modal.innerHTML = '<span class="close-modal">&times;</span><img class="modal-content" id="modalImage">';
+  document.body.appendChild(modal);
+  const modalImg = document.getElementById('modalImage');
+  const closeModal = modal.querySelector('.close-modal');
+
+  galleryItems.forEach(img => {
+    img.addEventListener('click', () => {
+      modal.style.display = 'flex';
+      modalImg.src = img.src;
+      modalImg.alt = img.alt;
+    });
+  });
+
+  closeModal.addEventListener('click', () => { modal.style.display = 'none'; });
+  modal.addEventListener('click', (e) => { if (e.target === modal) modal.style.display = 'none'; });
+
+  filterGallery('all');
+</script>
+</body>
+</html>

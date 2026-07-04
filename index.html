@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sumayya Afaq | Designer & Developer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700&display=swap" rel="stylesheet">
+  <script defer src="script.js"></script>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Inter', sans-serif; background-color: #fefcfb; color: #1e1e2a; line-height: 1.5; }
+    header { background-color: #ffffff; padding: 1rem 2rem; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 12px rgba(0,0,0,0.04); }
+    .navbar { display: flex; justify-content: space-between; align-items: center; max-width: 1280px; margin: auto; }
+    .logo { font-weight: 700; font-size: 1.5rem; background: linear-gradient(135deg, #c44569, #e66767); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .nav-links { list-style: none; display: flex; gap: 2rem; }
+    .nav-links a { text-decoration: none; color: #2d2f36; font-weight: 500; transition: color 0.2s ease; }
+    .nav-links a:hover { color: #c44569; }
+    .dropdown { position: relative; }
+    .dropdown-menu { display: none; position: absolute; top: 100%; right: 0; background-color: #ffffff; border: 1px solid #f0e2e2; border-radius: 12px; min-width: 220px; z-index: 999; box-shadow: 0 12px 24px rgba(0,0,0,0.06); padding: 0.5rem 0; }
+    .dropdown-menu li { display: block; }
+    .dropdown-menu a { padding: 0.6rem 1.2rem; display: block; color: #2d2f36; }
+    .dropdown-menu a:hover { background-color: #fdf2f2; color: #c44569; }
+    .dropdown:hover .dropdown-menu, .dropdown-menu:hover { display: block; }
+    .hamburger { display: none; font-size: 1.8rem; cursor: pointer; color: #c44569; }
+    @media (max-width: 768px) {
+      .nav-links { display: none; flex-direction: column; background: white; position: absolute; top: 70px; right: 0; width: 100%; text-align: center; padding: 1.5rem; gap: 1rem; box-shadow: 0 12px 20px rgba(0,0,0,0.05); }
+      .nav-links.show { display: flex; }
+      .hamburger { display: block; }
+    }
+    .hero { padding: 5rem 2rem; text-align: center; background: linear-gradient(145deg, #fff7f5 0%, #fff0ed 100%); border-bottom: 1px solid #ffe2dc; }
+    .hero h1 { font-size: 3.2rem; font-weight: 700; color: #2d2f36; margin-bottom: 1rem; }
+    .typewriter { font-size: 1.8rem; font-weight: 500; background: linear-gradient(120deg, #c44569, #e66767); -webkit-background-clip: text; background-clip: text; color: transparent; border-right: 2px solid #c44569; display: inline-block; white-space: nowrap; overflow: hidden; margin-bottom: 1rem; }
+    .hero p { font-size: 1.2rem; max-width: 600px; margin: 1rem auto 0; color: #4a4e5c; }
+    .hero-buttons { margin-top: 2rem; display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .btn { display: inline-block; padding: 0.8rem 1.8rem; border-radius: 40px; font-weight: 600; text-decoration: none; transition: all 0.25s ease; background-color: #c44569; color: white; border: none; cursor: pointer; }
+    .btn-outline { background-color: transparent; border: 1.5px solid #c44569; color: #c44569; }
+    .btn-outline:hover { background-color: #c44569; color: white; }
+    .btn:hover { transform: translateY(-3px); box-shadow: 0 6px 14px rgba(196,69,105,0.25); }
+    .section { padding: 5rem 2rem; max-width: 1280px; margin: auto; }
+    .section-title { font-size: 2.2rem; font-weight: 700; text-align: center; margin-bottom: 3rem; color: #2d2f36; position: relative; }
+    .section-title:after { content: ''; display: block; width: 60px; height: 4px; background: linear-gradient(90deg, #c44569, #e66767); margin: 0.8rem auto 0; border-radius: 4px; }
+    .about-content { background: #ffffff; padding: 2.5rem; border-radius: 28px; box-shadow: 0 8px 24px rgba(0,0,0,0.02); border: 1px solid #f7e6e3; }
+    .about-content p { margin-bottom: 1.2rem; font-size: 1rem; color: #3b3e48; }
+    .services-row { display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap; margin-top: 2rem; }
+    .service-block { display: flex; flex-direction: column; align-items: center; width: 120px; }
+    .glass-card { width: 100%; height: 120px; background: rgba(255,255,255,0.15); backdrop-filter: blur(14px); border: 1px solid rgba(255,255,255,0.3); border-radius: 20px; overflow: hidden; box-shadow: 0 6px 20px rgba(0,0,0,0.1); transition: transform 0.3s ease; }
+    .glass-card:hover { transform: translateY(-6px); }
+    .glass-card img { width: 100%; height: 100%; object-fit: cover; }
+    .service-label { margin-top: 0.5rem; font-weight: 500; font-size: 0.85rem; text-align: center; color: #333; }
+    .skills-pills { display: flex; flex-wrap: wrap; gap: 0.6rem; margin: 1.5rem 0; }
+    .pill { background-color: #fef0ee; padding: 0.4rem 1rem; border-radius: 40px; font-size: 0.85rem; font-weight: 500; color: #c44569; }
+    .card { background-color: #fde6e8; color: black; border: none; padding: 0.7rem 1rem; text-align: center; border-radius: 6px; font-size: 0.95rem; box-shadow: 2px 2px 6px rgba(0,0,0,0.1); transition: transform 0.2s ease, background-color 0.3s; }
+    .card:hover { background-color: #fce4ec; transform: translateY(-4px); box-shadow: 4px 4px 12px rgba(0,0,0,0.15); }
+    .cta-block { text-align: center; background: linear-gradient(135deg, #fdf3f0, #fff7f5); border-radius: 32px; padding: 3rem 2rem; margin: 2rem 0; }
+    footer { background-color: #1e1e2a; color: #b9b9c3; text-align: center; padding: 3rem 2rem; }
+    footer a { color: #df8f8f; text-decoration: none; }
+    .socials a { margin: 0 0.75rem; }
+
+    /* Floating WhatsApp */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 1000;
+      background-color: #25d366;
+      color: white;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 32px;
+      box-shadow: 0 4px 14px rgba(37, 211, 102, 0.4);
+      text-decoration: none;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .whatsapp-float:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 20px rgba(37, 211, 102, 0.5);
+    }
+
+    @media (max-width: 640px) {
+      .hero h1 { font-size: 2.2rem; }
+      .typewriter { font-size: 1.2rem; white-space: normal; border-right: none; }
+      .section-title { font-size: 1.8rem; }
+      .services-row { gap: 0.8rem; }
+      .service-block { width: 90px; }
+      .glass-card { height: 90px; }
+      .service-label { font-size: 0.7rem; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <nav class="navbar">
+    <div class="logo">Sumayya Afaq</div>
+    <div class="hamburger">☰</div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li class="dropdown">
+        <a href="services.html">Services ▾</a>
+        <ul class="dropdown-menu">
+          <li><a href="web-development.html">Web Development</a></li>
+          <li><a href="app-development.html">App Development</a></li>
+          <li><a href="design.html">Graphic Design</a></li>
+          <li><a href="branding.html">Branding</a></li>
+          <li><a href="socialmedia.html">Social Media</a></li>
+          <li><a href="presentations.html">Presentations</a></li>
+          <li><a href="wedding-stationery.html">Wedding Stationery</a></li>
+          <li><a href="tutoring.html">In‑Person Tutoring</a></li>
+          <li><a href="career-documents.html">Career Documents</a></li>
+          <li><a href="teaching-resources.html">Teaching Resources</a></li>
+          <li><a href="excel-data.html">Excel & Data</a></li>
+        </ul>
+      </li>
+      <li><a href="portfolio.html">Design Portfolio</a></li>
+      <li><a href="projects.html">Web Projects</a></li>
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<section class="hero" id="home">
+  <h1>Hi, I'm Sumayya Afaq</h1>
+  <div class="typewriter"></div>
+  <p>Design-led web development • Brand storytelling • EdTech & Tutoring</p>
+  <div class="hero-buttons">
+    <a href="contact.html" class="btn">Hire Me</a>
+    <a href="assets/SumayyaAfaq_Resume.pdf" class="btn btn-outline" download>Download Resume</a>
+  </div>
+</section>
+
+<section class="section" id="about">
+  <h2 class="section-title">About Me</h2>
+  <div class="about-content">
+    <p>I'm Sumayya — a web developer with a flair for visual storytelling and a deep appreciation for clean, purposeful design.</p>
+    <p>My work blends front-end development with graphic design, allowing me to craft both functional websites and beautiful brand visuals. I code in multiple languages, create brand identities, and build digital experiences that feel intentional and human.</p>
+    <p>With 8+ years of teaching experience across multiple curricula, I also offer in‑person tutoring and educational resources. I'm especially driven by projects that support education, creativity, and women-led businesses.</p>
+    <div class="skills-pills">
+      <span class="pill">Java</span> <span class="pill">HTML/CSS</span> <span class="pill">JavaScript</span>
+      <span class="pill">PHP/Laravel</span> <span class="pill">Python</span> <span class="pill">Figma</span>
+      <span class="pill">Adobe Creative Suite</span> <span class="pill">UI/UX</span>
+    </div>
+    <p>💬 Fluent in English, Urdu, Hindi, Bengali, Arabic, Brohi – because design speaks every language.</p>
+  </div>
+</section>
+
+<section class="section" id="services">
+  <h2 class="section-title">My Services</h2>
+  <div class="services-row">
+    <div class="service-block"><a href="web-development.html" class="glass-card"><img src="assets/web-dev.png" alt="Web Development" /></a><p class="service-label">Web Dev</p></div>
+    <div class="service-block"><a href="app-development.html" class="glass-card"><img src="assets/app-dev.png" alt="App Development" /></a><p class="service-label">App Dev</p></div>
+    <div class="service-block"><a href="design.html" class="glass-card"><img src="assets/graphic-design.png" alt="Graphic Design" /></a><p class="service-label">Graphic Design</p></div>
+    <div class="service-block"><a href="branding.html" class="glass-card"><img src="assets/branding.png" alt="Branding" /></a><p class="service-label">Branding</p></div>
+    <div class="service-block"><a href="socialmedia.html" class="glass-card"><img src="assets/social-media.png" alt="Social Media" /></a><p class="service-label">Social Media</p></div>
+    <div class="service-block"><a href="presentations.html" class="glass-card"><img src="assets/presentation.png" alt="Presentations" /></a><p class="service-label">Presentations</p></div>
+    <div class="service-block"><a href="wedding-stationery.html" class="glass-card"><img src="assets/wedding.png" alt="Wedding Stationery" /></a><p class="service-label">Wedding</p></div>
+    <div class="service-block"><a href="tutoring.html" class="glass-card"><img src="assets/tutoring.png" alt="Tutoring" /></a><p class="service-label">Tutoring</p></div>
+    <div class="service-block"><a href="career-documents.html" class="glass-card"><img src="assets/career.png" alt="Career" /></a><p class="service-label">Career Docs</p></div>
+    <div class="service-block"><a href="teaching-resources.html" class="glass-card"><img src="assets/teaching.png" alt="Teaching" /></a><p class="service-label">Teaching Resources</p></div>
+    <div class="service-block"><a href="excel-data.html" class="glass-card"><img src="assets/excel.png" alt="Excel" /></a><p class="service-label">Excel & Data</p></div>
+  </div>
+</section>
+
+<section class="cta-block">
+  <h3 style="font-size: 1.8rem; margin-bottom: 0.5rem;">Let's Bring Your Ideas to Life</h3>
+  <p style="margin-bottom: 1.5rem;">Whether it's a fresh brand, a beautiful website, or meaningful design — I'm here to help you build it with intention.</p>
+  <a href="contact.html" class="btn">Start Your Project</a>
+</section>
+
+<!-- Floating WhatsApp Icon -->
+<a href="https://wa.me/971556703700" target="_blank" class="whatsapp-float" aria-label="WhatsApp">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="32" height="32" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<footer>
+  <h3 style="color: white;">Let's Connect</h3>
+  <p>Email: <a href="mailto:sumayyaafaq.sa@gmail.com">sumayyaafaq.sa@gmail.com</a> | WhatsApp: <a href="https://wa.me/971556703700" target="_blank">+971 55 670 3700</a></p>
+  <div class="socials">
+    <a href="https://github.com/sumayyaafaq" target="_blank">GitHub</a>
+    <a href="https://www.linkedin.com/in/sumayya-afaq-975a22266" target="_blank">LinkedIn</a>
+    <a href="#" target="_blank">Instagram (Coming Soon)</a>
+  </div>
+  <p class="copyright" style="margin-top: 1.5rem;">© 2025 Sumayya Afaq. All rights reserved.</p>
+</footer>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    // Typewriter
+    const typeEl = document.querySelector('.typewriter');
+    if (typeEl) {
+      const roles = ['Web Developer', 'UI/UX Designer', 'Brand Stylist', 'In‑Person Tutor'];
+      let roleIndex = 0, charIndex = 0, isDeleting = false;
+      const type = () => {
+        const current = roles[roleIndex];
+        typeEl.textContent = isDeleting ? current.substring(0, charIndex--) : current.substring(0, charIndex++);
+        let speed = isDeleting ? 70 : 130;
+        if (!isDeleting && charIndex === current.length) { speed = 1500; isDeleting = true; }
+        else if (isDeleting && charIndex === 0) { isDeleting = false; roleIndex = (roleIndex + 1) % roles.length; speed = 400; }
+        setTimeout(type, speed);
+      };
+      type();
+    }
+    // Mobile menu
+    const hamburger = document.querySelector('.hamburger');
+    const navLinks = document.querySelector('.nav-links');
+    if (hamburger && navLinks) hamburger.addEventListener('click', () => navLinks.classList.toggle('show'));
+  });
+</script>
+</body>
+</html>
